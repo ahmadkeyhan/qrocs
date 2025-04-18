@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Markazi_Text } from "next/font/google";
 import "./globals.css";
+import localFont from 'next/font/local';
+import { ThemeProviderWrapper } from "@/providers/themeProvider";
+import { Navbar } from "@/components/ui/navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const markazi = Markazi_Text({
+  subsets: ['arabic'],
+  variable: '--font-markazi',
+  display: 'swap'
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const potk = localFont({
+  src: './fonts/Potk.woff',
+  variable: '--font-potk',
+  display: 'swap',
+})
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,11 +29,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fa" dir="rtl" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${markazi.variable} ${potk.variable} antialiased bg-background`}
       >
-        {children}
+        <ThemeProviderWrapper>
+          <Navbar />
+          {children}
+        </ThemeProviderWrapper>
       </body>
     </html>
   );

@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* @layer base { */
+  @theme {
+    --color-background: white;
+    --color-foreground: #111;
+    --color-subtext: #666;
+    --color-border: #aaa;
+    --color-primary: oklch(85.2% 0.199 91.936);
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 24.6 95% 53.1%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 24.6 95% 53.1%;
+    --qqteal: 168 27% 25%;
+    --qqbrown: 27 49% 58%;
+    --qqdarkbrown: 9 51% 34%;
+    --qqorange: 15 70% 49%;
+    --qqcream: 35 59% 71%;
+    --radius: 0.75rem;
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  .dark {
+    --color-background: black;
+    --color-foreground: white;
+    --color-subtext: #888;
+    --color-border: #444;
+    --color-primary: oklch(90.5% 0.182 98.111);
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 20.5 90.2% 48.2%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 72.2% 50.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --qqteal: 167.65 26.98% 24.71%;
+    --qqbrown: 31 52.17% 54.9%;
+    --qqdarkbrown: 8.76 50.86% 34.31%;
+    --qqorange: 15.09 69.72% 49.22%;
+    --qqcream: 34.88 58.9% 71.37%;
+    --ring: 20.5 90.2% 48.2%;
+  }
+/* } */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  
+  body {
+    
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Fix for transitions */
+  html.dark {
+    color-scheme: dark;
+  }
+
+  /* Ensure transitions work properly */
+  .transition-all,
+  .transition-colors,
+  .transition-opacity,
+  .transition-transform {
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-markazi);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-potk);
 }
