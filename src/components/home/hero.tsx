@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
-    const {theme} = useTheme()
+    const {resolvedTheme} = useTheme()
     const [mounted, setMounted] = useState(false)
     
     useEffect(() => {
@@ -52,7 +52,7 @@ export default function Hero() {
         </div>
         <div className="relative aspect-square w-full -my-4 lg:-my-10">
             <Image
-                src={theme === "light" ? `/heroBanner.png` : `/heroBannerDark.png`}
+                src={resolvedTheme === "light" ? `/heroBanner.png` : `/heroBannerDark.png`}
                 alt="sdf"
                 fill
                 className="object-cover"
