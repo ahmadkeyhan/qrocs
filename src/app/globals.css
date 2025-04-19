@@ -2,6 +2,15 @@
 
 /* @layer base { */
   @theme {
+    --animate-marquee: marquee 25s linear infinite;
+    @keyframes marquee {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
     --color-background: white;
     --color-foreground: #111;
     --color-subtext: #666;
