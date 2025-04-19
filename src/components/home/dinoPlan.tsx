@@ -9,7 +9,7 @@ export default function DinoPlan() {
             <div className="hidden w-full gap-4 -mr-6 -mt-4 lg:flex lg:items-center">
                 <div className="relative w-20 h-20 rounded-3xl overflow-hidden">
                     <Image
-                        src="/placeholder.svg"
+                        src="/dinoAvatar.jpg"
                         alt="sdf"
                         fill
                         className="object-cover"
