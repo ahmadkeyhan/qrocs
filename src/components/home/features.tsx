@@ -76,7 +76,7 @@ export default function Features() {
     const [isPrint, setIsPrint] = useState(true)
 
   return (
-    <div className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-3 w-full p-4 bg-gradient-to-b from-background to-foreground/10 to-50%">
+    <div className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-3 w-full p-4 bg-gradient-to-b from-background to-foreground/5">
         <div className="flex flex-col gap-2 items-center text-center px-4 sm:col-span-2 lg:col-span-3">
             <h2 className="text-3xl text-primary">ویژگی‌های کراکس</h2>
             {/* <p className="text-lg">چرا منوی دیجیتال کراکس بهتر از منوی چاپی یا بقیه منوهای دیجیتاله؟</p> */}
