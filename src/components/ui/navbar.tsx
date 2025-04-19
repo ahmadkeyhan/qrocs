@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "Collection", href: "/collection" },
-  { name: "Mint", href: "/mint" },
-  { name: "About", href: "/about" },
+  { name: "خانه", href: "/" },
+  { name: "طرح‌ها", href: "/collection" },
+  { name: "مستندات", href: "/mint" },
+  { name: "داستان ما", href: "/about" },
 ]
 
 export function Navbar() {
@@ -47,10 +47,10 @@ export function Navbar() {
             <Link
               key={item.name}
               href={item.href}
-              className="relative px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 group"
+              className="relative px-3 py-2 font-medium text-base text-foreground/80 hover:text-foreground transition-colors duration-300 group"
             >
               {item.name}
-              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-purple-500 to-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left"></span>
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left"></span>
             </Link>
           ))}
         </div>
