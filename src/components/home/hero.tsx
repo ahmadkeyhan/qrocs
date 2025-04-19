@@ -14,7 +14,7 @@ export default function Hero() {
         setMounted(true)
     },[])
 
-    if (!mounted) 
+    if (!mounted) {
         return (
             <div className="grid sm:grid-cols-2 w-full p-4 max-w-5xl">
                 <div className="flex flex-col text-center px-8 sm:px-2 items-center justify-center w-full">
@@ -35,6 +35,8 @@ export default function Hero() {
                 </div>
             </div>
         );
+    }
+        
   return (
     <div className="grid sm:grid-cols-2 w-full p-4 max-w-5xl">
         <div className="flex flex-col text-center px-8 sm:px-2 items-center justify-center w-full">
