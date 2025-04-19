@@ -21,7 +21,7 @@ export default function Plans() {
                     <div className="flex flex-col sm:flex-row-reverse items-center gap-2 bg-background pb-2 sm:pb-0 sm:pl-4 sm:gap-4 sm:w-48">
                         <div className="relative w-20 h-20 rounded-3xl overflow-hidden">
                             <Image
-                                src="/placeholder.svg"
+                                src="/dinoAvatar.jpg"
                                 alt="sdf"
                                 fill
                                 className="object-cover"
@@ -34,7 +34,7 @@ export default function Plans() {
                     <div className="flex flex-col sm:flex-row-reverse items-center gap-2 bg-background pb-2 sm:pb-0 sm:pl-4 sm:gap-4 sm:w-48">
                         <div className="relative w-20 h-20 rounded-3xl overflow-hidden">
                             <Image
-                                src="/placeholder.svg"
+                                src="/rangoAvatar.jpg"
                                 alt="sdf"
                                 fill
                                 className="object-cover"
@@ -47,7 +47,7 @@ export default function Plans() {
                     <div className="flex flex-col sm:flex-row-reverse items-center gap-2 bg-background pb-2 sm:pb-0 sm:pl-4 sm:gap-4 sm:w-48">
                         <div className="relative w-20 h-20 rounded-3xl overflow-hidden">
                             <Image
-                                src="/placeholder.svg"
+                                src="/crocoAvatar.jpg"
                                 alt="sdf"
                                 fill
                                 className="object-cover"
