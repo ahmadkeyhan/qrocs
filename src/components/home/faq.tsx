@@ -2,9 +2,8 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "..
 import { questions } from "./questions"
 
 export default function Faq() {
-    console.log(questions)
     return (
-        <div className="relative flex flex-col items-center gap-6 w-full max-w-6xl py-6 mb-6 bg-gradient-to-b from-background to-foreground/10 to-50%">
+        <div className="relative flex flex-col items-center gap-6 w-full py-6 mb-6 bg-gradient-to-b from-background to-foreground/5">
             <h2 className="text-3xl text-primary">سوالات متداول</h2>
             <Accordion type="multiple" className="w-full max-w-4xl px-4 space-y-2">
                 {questions.map((question,index) => (
