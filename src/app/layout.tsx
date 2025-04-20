@@ -30,6 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
+      <head>
+        <meta name="enamad" content="20886743" />
+      </head>
       <body
         className={`${markazi.variable} ${potk.variable} antialiased bg-background`}
       >
