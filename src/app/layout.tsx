@@ -4,6 +4,7 @@ import "./globals.css";
 import localFont from 'next/font/local';
 import { ThemeProviderWrapper } from "@/providers/themeProvider";
 import { Navbar } from "@/components/ui/navbar";
+import {Footer} from "@/components/ui/footer";
 
 const markazi = Markazi_Text({
   subsets: ['arabic'],
@@ -39,6 +40,7 @@ export default function RootLayout({
         <ThemeProviderWrapper>
           <Navbar />
           {children}
+          <Footer />
         </ThemeProviderWrapper>
       </body>
     </html>
