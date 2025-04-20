@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import {QrCode} from "lucide-react"
@@ -19,14 +17,14 @@ export default function Hero() {
             <div className="grid sm:grid-cols-2 w-full p-4 max-w-5xl">
                 <div className="flex flex-col text-center px-8 sm:px-2 items-center justify-center w-full">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl text-primary mb-1">منوی دیجیتالتو بساز</h1>
-                    <p className="text-lg mb-4 text-foreground w-[32ch]">جای اینکه هر ماه منوتون رو دوباره چاپ کنید، با کراکس منوی کافه یا رستوران رو دیجیتال کنید تا مشتریانتون با اسکن کیوآرکد به راحتی ببیننش!</p>
+                    <p className="text-lg mb-4 text-foreground w-[32ch]">جای اینکه هر ماه منوی کافه یا رستوران رو دوباره چاپ کنی، با کراکس دیجیتالش کن تا مشتری‌ها با اسکن کیوآرکد به راحتی ببیننش!</p>
                     <div className="flex justify-center gap-4">
                         <Button variant="default" size="lg">
                         <QrCode className="w-5 h-5" />
                         <p className="text-lg">منوتو بساز</p>
                         </Button>
-                        <Button variant="secondary" size="lg">
-                        <p className="text-lg">پلن‌ها</p>
+                        <Button variant="default" size="lg" className="bg-foreground/15 text-foreground">
+                            <p className="text-lg">طرح‌ها</p>
                         </Button>
                     </div>
                 </div>
@@ -41,14 +39,14 @@ export default function Hero() {
     <div className="grid sm:grid-cols-2 w-full p-4 max-w-5xl">
         <div className="flex flex-col text-center px-8 sm:px-2 items-center justify-center w-full">
             <h1 className="text-3xl md:text-4xl lg:text-5xl text-primary mb-1">منوی دیجیتالتو بساز</h1>
-            <p className="text-lg mb-4 text-foreground w-[32ch]">جای اینکه هر ماه منوتون رو دوباره چاپ کنید، با کراکس منوی کافه یا رستوران رو دیجیتال کنید تا مشتریانتون با اسکن کیوآرکد به راحتی ببیننش!</p>
+            <p className="text-lg mb-4 text-foreground w-[32ch]">جای اینکه هر ماه منوی کافه یا رستوران رو دوباره چاپ کنی، با کراکس دیجیتالش کن تا مشتری‌ها با اسکن کیوآرکد به راحتی ببیننش!</p>
             <div className="flex justify-center gap-4">
                 <Button variant="default" size="lg">
                 <QrCode className="w-5 h-5" />
                 <p className="text-lg">منوتو بساز</p>
                 </Button>
-                <Button variant="secondary" size="lg">
-                <p className="text-lg">پلن‌ها</p>
+                <Button variant="default" size="lg" className="bg-foreground/15 text-foreground">
+                    <p className="text-lg">طرح‌ها</p>
                 </Button>
             </div>
         </div>
