@@ -6,10 +6,13 @@ import RangoPlan from "./rangoPlan";
 import CrocoPlan from "./crocoPlan";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { Switch } from "../ui/switch";
 
 export default function Plans() {
     const { resolvedTheme, setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
+    const [isMonthly, setIsmonthly] = useState(true)
+    
   
     // Only show the UI after mounting to prevent hydration mismatch
     useEffect(() => {
@@ -17,10 +20,17 @@ export default function Plans() {
     }, [])
     if (!mounted) {
         return (
-            <div className="relative flex flex-col items-center gap-6 w-full max-w-6xl py-6">
-                {/* <div> */}
-                    <h2 className="text-3xl text-primary">طرح‌های کراکس</h2>
-                {/* </div> */}
+            <div className="relative flex flex-col items-center gap-4 w-full max-w-6xl py-6">
+                <h2 className="text-3xl text-primary">طرح‌های کراکس</h2>
+                <div className="flex justify-center items-center gap-2 w-full mb-2">
+                    <p>پرداخت ماهانه</p>
+                    <Switch 
+                        id="new-dialog-active"
+                        checked={isMonthly}
+                        onCheckedChange={(checked) => setIsmonthly(!isMonthly)}
+                    />
+                    <p>پرداخت سالانه</p>
+                </div>
                 {/* mobile and tablet features */}
                 <Tabs
                   defaultValue="dino"
@@ -61,20 +71,20 @@ export default function Plans() {
                         <TabsContent
                             value="rango"
                         >
-                            <RangoPlan />
+                            <RangoPlan isMonthly={isMonthly} />
                         </TabsContent>
                         <TabsContent
                             value="croco"
                         >
-                            <CrocoPlan />
+                            <CrocoPlan isMonthly={isMonthly} />
                         </TabsContent>
                     </div>
                 </Tabs>
                 {/* desktop features */}
                 <div className="hidden lg:flex gap-6 mb-6">
                     <DinoPlan />
-                    <RangoPlan />
-                    <CrocoPlan />
+                    <RangoPlan isMonthly={isMonthly} />
+                    <CrocoPlan isMonthly={isMonthly} />
                 </div>
         
                 <Button variant="ghost" size="lg" className="relative w-40 rounded-full overflow-hidden text-subtext">
@@ -91,11 +101,19 @@ export default function Plans() {
             </div>
           );
     }
+
   return (
-    <div className="relative flex flex-col items-center gap-6 w-full max-w-6xl py-6">
-        {/* <div> */}
-            <h2 className="text-3xl text-primary">طرح‌های کراکس</h2>
-        {/* </div> */}
+    <div className="relative flex flex-col items-center gap-4 w-full max-w-6xl py-6">
+        <h2 className="text-3xl text-primary">طرح‌های کراکس</h2>
+        <div className="flex justify-center items-center gap-2 w-full mb-2">
+            <p>پرداخت ماهانه</p>
+            <Switch 
+                id="new-dialog-active"
+                checked={isMonthly}
+                onCheckedChange={(checked) => setIsmonthly(!isMonthly)}
+            />
+            <p>پرداخت سالانه</p>
+        </div>
         {/* mobile and tablet features */}
         <Tabs
           defaultValue="dino"
@@ -151,23 +169,23 @@ export default function Plans() {
                 <TabsContent
                     value="rango"
                 >
-                    <RangoPlan />
+                    <RangoPlan isMonthly={isMonthly} />
                 </TabsContent>
                 <TabsContent
                     value="croco"
                 >
-                    <CrocoPlan />
+                    <CrocoPlan isMonthly={isMonthly} />
                 </TabsContent>
             </div>
         </Tabs>
         {/* desktop features */}
         <div className="hidden lg:flex gap-6 mb-6">
             <DinoPlan />
-            <RangoPlan />
-            <CrocoPlan />
+            <RangoPlan isMonthly={isMonthly} />
+            <CrocoPlan isMonthly={isMonthly} />
         </div>
 
-        <Button variant="ghost" size="lg" className="relative w-40 rounded-full overflow-hidden text-subtext">
+        <Button variant="default" size="lg" className="relative w-40 rounded-full overflow-hidden bg-foreground text-background">
             <p className="text-lg">
             مقایسه‌ی کامل طرح‌ها
             </p>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
-export default function RangoPlan() {
+export default function RangoPlan({isMonthly} : {isMonthly: boolean}) {
     const { resolvedTheme, setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
   
@@ -26,7 +26,7 @@ export default function RangoPlan() {
                     <p className="text-subtext">رنگو بهت کمک میکنه با پالت رنگ و هویت بصری خودت منوی دیجیتالتو بسازی؛ و با اضافه کردن عکس آیتم‌ها به مشتریانت تو انتخاب سفارش کمک کنی...</p>
                 </div>
                 <div className="relative bg-foreground/10 py-4 px-6 flex flex-col gap-4">
-                    <h4 className="text-2xl">{formatCurrency(200)} هزار تومان <span className="text-base text-subtext mr-2">در ماه</span></h4>
+                    <h4 className="text-2xl">{isMonthly ? `${formatCurrency(300)} هزار تومان ` : `${formatCurrency(3)} میلیون تومان `}<span className="text-base text-subtext mr-2">{isMonthly? "ماهانه" : "سالانه"}</span></h4>
                     <div className="w-full flex justify-center">
                         <Button variant="default" className="w-36">
                             <p className="text-lg">سفارش بده</p>
@@ -93,7 +93,7 @@ export default function RangoPlan() {
             <p className="text-subtext">رنگو بهت کمک میکنه با پالت رنگ و هویت بصری خودت منوی دیجیتالتو بسازی؛ و با اضافه کردن عکس آیتم‌ها به مشتریانت تو انتخاب سفارش کمک کنی...</p>
         </div>
         <div className="relative bg-purple-500/10 py-4 px-6 flex flex-col gap-4">
-            <h4 className="text-2xl">{formatCurrency(200)} هزار تومان <span className="text-base text-subtext mr-2">در ماه</span></h4>
+            <h4 className="text-2xl">{isMonthly ? `${formatCurrency(300)} هزار تومان ` : `${formatCurrency(3)} میلیون تومان `}<span className="text-base text-subtext mr-2">{isMonthly? "ماهانه" : "سالانه"}</span></h4>
             <div className="w-full flex justify-center">
                 <Button variant="default" className="w-36 bg-purple-500">
                     <p className="text-lg">سفارش بده</p>
