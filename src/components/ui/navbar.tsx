@@ -9,9 +9,10 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   { name: "خانه", href: "/" },
-  { name: "طرح‌ها", href: "/collection" },
-  { name: "مستندات", href: "/mint" },
-  { name: "داستان ما", href: "/about" },
+  { name: "سفارش منو", href: "/order" },
+  { name: "طرح‌ها", href: "/plans" },
+  { name: "مستندات", href: "/docs" },
+  { name: "درباره‌ی ما", href: "/about" },
 ]
 
 export function Navbar() {
@@ -105,14 +106,14 @@ export function Navbar() {
                 transitionDuration: "300ms",
               }}>
           <div className="flex items-center justify-between mb-8">
-            <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 group">
               <div className="relative flex items-center justify-center w-8 h-8">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></div>
+                <div className="absolute inset-0 bg-primary rounded-full"></div>
                 <LuQrCode className="relative z-10 w-4 h-4 text-background" />
               </div>
-              <h2 className="text-2xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500">
-                کراکس
-              </h2>
+              <h3 className="font-bold text-2xl bg-clip-text text-transparent bg-primary">
+              کراکس 
+              </h3>
             </Link>
             <Button
               variant="ghost"
