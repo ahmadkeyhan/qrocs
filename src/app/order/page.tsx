@@ -77,10 +77,11 @@ export default function Order() {
 
     return (
         <div className="min-h-screen pb-20 pt-2">
-            <main className="flex flex-col items-center">
+            <main className="flex flex-col items-center min-h-screen p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
+                <h1 className="text-3xl text-primary">سفارش منوی دیجیتال</h1>
                 <form
                     onSubmit={handleCreateSubmit}
-                    className="w-full px-4"
+                    className="relative w-full p-4 bg-background rounded-3xl"
                 >
                     <div className="grid gap-4 sm:grid-cols-2">
                         <div className="flex flex-col gap-2">
@@ -141,12 +142,12 @@ export default function Order() {
                                     }
                                     required
                                 />
-                                <p className="w-1/5 text-lg font-semibold">{formatCurrency(98)} +</p>
+                                <p className="w-1/5 text-lg text-subtext font-semibold">{formatCurrency(98)} +</p>
                             </div>
                         </div>
                         <div className="flex flex-col gap-2">
                             <Label className="text-lg font-medium">
-                                اینستاگرام مجموعه (اختیاری)
+                                اینستاگرام مجموعه: (اختیاری)
                             </Label>
                             <Input
                                 placeholder=""
@@ -192,16 +193,16 @@ export default function Order() {
                                         dir="rtl"
                                         value={newOrder.paymantPeriod}
                                         onValueChange={handlePaymentPeriodChange}
-                                        className="flex gap-16"
+                                        className="flex gap-4"
                                         required
                                     >
                                         <div className="flex items-center gap-1">
                                             <RadioGroupItem value="monthly" id="monthly" />
-                                            <Label className="text-lg font-medium" htmlFor="monthly">ماهانه</Label>
+                                            <Label className="text-base font-medium" htmlFor="monthly">ماهانه {formatCurrency(newOrder.plan === "rango" ? 300 : 500)} هزار تومان</Label>
                                         </div>
                                         <div className="flex items-center gap-1">
                                             <RadioGroupItem value="yearly" id="yearly" />
-                                            <Label className="text-lg font-medium" htmlFor="yearly">سالانه ({formatCurrency(17)}% تخفیف)</Label>
+                                            <Label className="text-base font-medium" htmlFor="yearly">سالانه {formatCurrency(newOrder.plan === "rango" ? 3 : 5)} میلیون تومان</Label>
                                         </div>
                                     </RadioGroup>
                                 </>
@@ -213,12 +214,16 @@ export default function Order() {
                                 disabled={isLoading}
                                 variant="default"
                                 size="lg"
-                                className="text-lg font-bold"
+                                className="text-xl font-bold"
                             >
                                 ثبت سفارش
                             </Button>
                         </div>
                     </div>
+                    <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
+                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
+                    <div className="absolute bottom-0 top-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-border to-transparent" />
+                    <div className="absolute bottom-0 top-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-border to-transparent" />
                 </form>
             </main>
         </div>
