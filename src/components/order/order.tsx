@@ -155,7 +155,6 @@ export default function Order() {
                                 onChange={(e) =>
                                     setNewOrder({ ...newOrder, storeInstagram: e.target.value })
                                 }
-                                required
                             />
                         </div>
                         <div className="flex flex-col gap-2">
