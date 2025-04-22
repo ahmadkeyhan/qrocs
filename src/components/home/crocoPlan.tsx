@@ -4,6 +4,7 @@ import { formatCurrency } from "@/lib/utils";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 export default function RangoPlan({isMonthly}:{isMonthly:boolean}) {
     const { resolvedTheme, setTheme } = useTheme()
@@ -28,9 +29,11 @@ export default function RangoPlan({isMonthly}:{isMonthly:boolean}) {
                 <div className="relative bg-foreground/10 py-4 px-6 flex flex-col gap-4">
                     <h4 className="text-2xl">{isMonthly ? `${formatCurrency(500)} هزار تومان ` : `${formatCurrency(5)} میلیون تومان `}<span className="text-base text-subtext mr-2">{isMonthly? "ماهانه" : "سالانه"}</span></h4>
                     <div className="w-full flex justify-center">
-                        <Button variant="default" className="w-36">
-                            <p className="text-lg">سفارش بده</p>
-                        </Button>
+                        <Link href={`/order?plan=croco&payment=${isMonthly?"monthly":"yearly"}`}>
+                            <Button variant="default" className="w-36 bg-amber-400 dark:bg-amber-300">
+                                <p className="text-lg">سفارش کروکو</p>
+                            </Button>
+                        </Link>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
@@ -95,9 +98,11 @@ export default function RangoPlan({isMonthly}:{isMonthly:boolean}) {
         <div className="relative bg-amber-400/10 py-4 px-6 flex flex-col gap-4">
             <h4 className="text-2xl">{isMonthly ? `${formatCurrency(500)} هزار تومان ` : `${formatCurrency(5)} میلیون تومان `}<span className="text-base text-subtext mr-2">{isMonthly? "ماهانه" : "سالانه"}</span></h4>
             <div className="w-full flex justify-center">
-                <Button variant="default" className="w-36 bg-amber-400 dark:bg-amber-300">
-                    <p className="text-lg">سفارش بده</p>
-                </Button>
+                <Link href={`/order?plan=croco&payment=${isMonthly?"monthly":"yearly"}`}>
+                    <Button variant="default" className="w-36 bg-amber-400 dark:bg-amber-300">
+                        <p className="text-lg">سفارش کروکو</p>
+                    </Button>
+                </Link>
             </div>
             <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
