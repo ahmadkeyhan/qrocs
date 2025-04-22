@@ -88,19 +88,19 @@ export default function RangoPlan({isMonthly} : {isMonthly: boolean}) {
                         className="object-cover"
                     />
                 </div>
-                <h3 className="text-2xl text-purple-500">رنگو</h3>
+                <h3 className="text-2xl text-primary">رنگو</h3>
             </div>
             <p className="text-subtext">رنگو بهت کمک میکنه با پالت رنگ و هویت بصری خودت منوی دیجیتالتو بسازی؛ و با اضافه کردن عکس آیتم‌ها به مشتریانت تو انتخاب سفارش کمک کنی...</p>
         </div>
-        <div className="relative bg-purple-500/10 py-4 px-6 flex flex-col gap-4">
+        <div className="relative bg-primary/10 py-4 px-6 flex flex-col gap-4">
             <h4 className="text-2xl">{isMonthly ? `${formatCurrency(300)} هزار تومان ` : `${formatCurrency(3)} میلیون تومان `}<span className="text-base text-subtext mr-2">{isMonthly? "ماهانه" : "سالانه"}</span></h4>
             <div className="w-full flex justify-center">
-                <Button variant="default" className="w-36 bg-purple-500">
+                <Button variant="default" className="w-36">
                     <p className="text-lg">سفارش بده</p>
                 </Button>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent" />
         </div>
         <div className="flex flex-col p-4 px-6 gap-2">
             <h4>ویژگی‌های برجسته:</h4>

@@ -130,7 +130,7 @@ export default function Plans() {
                                 className="object-cover"
                             />
                         </div>
-                        <h3 className="sm:text-xl">داینو</h3>
+                        <h3 className="text-lg sm:text-xl">داینو</h3>
                     </div>
                 </TabsTrigger>
                 <TabsTrigger value="rango">
@@ -143,7 +143,7 @@ export default function Plans() {
                                 className="object-cover"
                             />
                         </div>
-                        <h3 className="sm:text-xl text-purple-500">رنگو</h3>
+                        <h3 className="text-lg sm:text-xl text-purple-500">رنگو</h3>
                     </div>
                 </TabsTrigger>
                 <TabsTrigger value="croco">
@@ -156,7 +156,7 @@ export default function Plans() {
                                 className="object-cover"
                             />
                         </div>
-                        <h3 className="sm:text-xl text-primary">کروکو</h3>
+                        <h3 className="text-lg sm:text-xl text-amber-400 dark:text-amber-300">کروکو</h3>
                     </div>
                 </TabsTrigger>
             </TabsList>
