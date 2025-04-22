@@ -3,6 +3,7 @@ import Image from "next/image";
 import {QrCode} from "lucide-react"
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Hero() {
     const {resolvedTheme} = useTheme()
@@ -19,10 +20,12 @@ export default function Hero() {
                     <h1 className="text-3xl md:text-4xl lg:text-5xl text-primary mb-1">منوی دیجیتالتو بساز</h1>
                     <p className="text-lg mb-4 text-foreground w-[32ch]">جای اینکه هر ماه منوی کافه یا رستوران رو دوباره چاپ کنی، با کراکس دیجیتالش کن تا مشتری‌ها با اسکن کیوآرکد به راحتی ببیننش!</p>
                     <div className="flex justify-center gap-4">
-                        <Button variant="default" size="lg">
-                        <QrCode className="w-5 h-5" />
-                        <p className="text-lg">منوتو بساز</p>
-                        </Button>
+                        <Link href='/order'>
+                            <Button variant="default" size="lg">
+                                <QrCode className="w-5 h-5" />
+                                <p className="text-lg">سفارش منو</p>
+                            </Button>
+                        </Link>
                         <Button variant="default" size="lg" className="bg-foreground/15 text-foreground">
                             <p className="text-lg">طرح‌ها</p>
                         </Button>
@@ -41,10 +44,12 @@ export default function Hero() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl text-primary mb-1">منوی دیجیتالتو بساز</h1>
             <p className="text-lg mb-4 text-foreground w-[32ch]">جای اینکه هر ماه منوی کافه یا رستوران رو دوباره چاپ کنی، با کراکس دیجیتالش کن تا مشتری‌ها با اسکن کیوآرکد به راحتی ببیننش!</p>
             <div className="flex justify-center gap-4">
-                <Button variant="default" size="lg">
-                <QrCode className="w-5 h-5" />
-                <p className="text-lg">منوتو بساز</p>
-                </Button>
+                <Link href='/order'>
+                    <Button variant="default" size="lg">
+                        <QrCode className="w-5 h-5" />
+                        <p className="text-lg">سفارش منو</p>
+                    </Button>
+                </Link>
                 <Button variant="default" size="lg" className="bg-foreground/15 text-foreground">
                     <p className="text-lg">طرح‌ها</p>
                 </Button>
