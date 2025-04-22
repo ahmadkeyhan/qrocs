@@ -27,6 +27,7 @@ interface FormOrderData {
 export default function Order() {
     const searchParams = useSearchParams()
     const plan = searchParams.get('plan')
+    const paymentPeriod = searchParams.get('payment')
     const [provinceId, setProvinceId] = useState()
     const provinces = cities.filter((city) => city.type === "province").sort((a,b) => a.name.localeCompare(b.name))
     // const turk = cities.filter((city) => city.type === "county" && city["province_id"] === 103)
@@ -39,7 +40,7 @@ export default function Order() {
         city: "",
         province: "",
         plan: plan? plan : "",
-        paymantPeriod: ""
+        paymantPeriod: paymentPeriod? paymentPeriod : ""
     });
     const [isLoading, setIsLoading] = useState(false);
     
@@ -63,7 +64,7 @@ export default function Order() {
                 city: "",
                 province: "",
                 plan: plan? plan : "",
-                paymantPeriod: ""
+                paymantPeriod: paymentPeriod? paymentPeriod : ""
             });
 
             toast({
