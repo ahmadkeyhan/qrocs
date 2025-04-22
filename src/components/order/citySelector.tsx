@@ -15,15 +15,18 @@ interface citySelectorProps {
     cities: string[]
   value: string
   onChange: (value: string) => void
+  disabled : boolean
 }
 
-export default function CitySelector({ cities, value, onChange }: citySelectorProps) {
+export default function CitySelector({ cities, value, onChange, disabled }: citySelectorProps) {
   const [open, setOpen] = useState(false)
   const [selectedCity, setSelectedCity] = useState<string>(value || "")
 
   useEffect(() => {
     if (value) {
       setSelectedCity(value)
+    } else {
+      setSelectedCity("")
     }
   }, [value])
 
@@ -37,7 +40,7 @@ export default function CitySelector({ cities, value, onChange }: citySelectorPr
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild disabled={disabled}>
         <Button variant="outline" role="combobox" aria-expanded={open} className="relative w-full flex-row justify-between bg-primary/10 border-0">
           <div className="flex items-start px-2 gap-2">
             {selectedCity ? (
