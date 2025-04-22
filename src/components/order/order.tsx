@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radioGroup";
 import { createOrder } from "@/lib/data/orderData";
-import {IOrder} from "@/models/Order"
+import { useToast } from "@/components/ui/toastContext";
 import { formatCurrency } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -43,22 +43,33 @@ export default function Order() {
     });
     const [isLoading, setIsLoading] = useState(false);
     
+    const { toast } = useToast();
+
     const handleCreateSubmit = async (e: FormEvent) => {
         e.preventDefault();
         try {
             setIsLoading(true);
-            console.log(newOrder)
-            await createOrder(newOrder);
+            if (newOrder.plan !== "dino") {
+                await createOrder(newOrder);
+            } else {
+                await createOrder({...newOrder, paymantPeriod: "monthly"});
+            }
+            
             setNewOrder({
-            storeName: "",
-            storeInstagram: "",
-            ownerName: "",
-            phoneNumber: 0,
-            city: "",
-            province: "",
-            plan: plan? plan : "",
-            paymantPeriod: ""
-        });
+                storeName: "",
+                storeInstagram: "",
+                ownerName: "",
+                phoneNumber: 0,
+                city: "",
+                province: "",
+                plan: plan? plan : "",
+                paymantPeriod: ""
+            });
+
+            toast({
+                title: "سفارش شما ثبت شد!",
+                description: "به زودی با شما تماس می‌گیریم."
+            })
 
         } catch (error: any) {
             console.log(error.message)
@@ -123,11 +134,12 @@ export default function Order() {
                             />
                         </div>
                         <div className="flex gap-2">
-                            {provinceId && <CitySelector 
+                            <CitySelector 
                                 value={newOrder.city}
                                 cities={cities.filter((city) => city.type === "county" && city["province_id"] === provinceId).sort((a,b) => a.name.localeCompare(b.name)).map((city) => city.name)}
                                 onChange={(cityName) => setNewOrder({ ...newOrder, city: cityName })}
-                            />}
+                                disabled={!provinceId}
+                            />
                         </div>
                         <div className="flex flex-col gap-2">
                             <Label className="text-lg font-medium">
