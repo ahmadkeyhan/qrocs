@@ -24,6 +24,8 @@ export default function ProvinceSelector({ provinces, value, onChange }: Provinc
   useEffect(() => {
     if (value) {
       setSelectedProvince(value)
+    } else {
+      setSelectedProvince("")
     }
   }, [value])
 
