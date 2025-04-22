@@ -5,6 +5,7 @@ import localFont from 'next/font/local';
 import { ThemeProviderWrapper } from "@/providers/themeProvider";
 import { Navbar } from "@/components/ui/navbar";
 import {Footer} from "@/components/ui/footer";
+import { ToastProvider } from "@/components/ui/toastContext";
 
 const markazi = Markazi_Text({
   subsets: ['arabic'],
@@ -38,9 +39,11 @@ export default function RootLayout({
         className={`${markazi.variable} ${potk.variable} antialiased bg-background`}
       >
         <ThemeProviderWrapper>
-          <Navbar />
-          {children}
-          <Footer />
+          <ToastProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </ToastProvider>
         </ThemeProviderWrapper>
       </body>
     </html>
