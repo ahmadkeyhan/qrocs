@@ -10,7 +10,13 @@ export default function Customer({cus} : {cus: Customer}) {
     return (
                 <div className="flex flex-col items-center gap-4">
                   <p className="text-xl">{cus.name}</p>
-                  <Image src={cus.logo} alt="logo" width={100} height={100}/>
+                  <div className="relative w-full aspect-square">
+                    <Image 
+                      src={cus.logo} 
+                      alt="logo" 
+                      fill
+                      className="object-contain p-4"/>
+                  </div>
                   <div className="flex justify-between gap-4">
                     <Link href={`/customers/${cus.slug}`}>
                       <ImageIcon className="w-4 h-4" />
