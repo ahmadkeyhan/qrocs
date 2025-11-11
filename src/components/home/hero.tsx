@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button"
 import Image from "next/image";
 import {QrCode} from "lucide-react"
 import { useTheme } from "next-themes";
@@ -26,9 +26,11 @@ export default function Hero() {
                                 <p className="text-lg">سفارش منو</p>
                             </Button>
                         </Link>
-                        <Button variant="default" size="lg" className="bg-foreground/15 text-foreground">
-                            <p className="text-lg">طرح‌ها</p>
-                        </Button>
+                        <Link href='#plans'>
+                            <Button variant="default" size="lg" className="bg-foreground/15 text-foreground">
+                                <p className="text-lg">پلن‌ها</p>
+                            </Button>
+                        </Link>
                     </div>
                 </div>
                 <div className="relative aspect-square w-full -my-4 lg:-my-10">
@@ -50,9 +52,11 @@ export default function Hero() {
                         <p className="text-lg">سفارش منو</p>
                     </Button>
                 </Link>
-                <Button variant="default" size="lg" className="bg-foreground/15 text-foreground">
-                    <p className="text-lg">طرح‌ها</p>
-                </Button>
+                <Link href='#plans'>
+                    <Button variant="default" size="lg" className="bg-foreground/15 text-foreground">
+                        <p className="text-lg">پلن‌ها</p>
+                    </Button>
+                </Link>
             </div>
         </div>
         <div className="relative aspect-square w-full -my-4 lg:-my-10">
