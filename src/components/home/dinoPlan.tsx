@@ -15,7 +15,7 @@ export default function DinoPlan() {
     }, [])
     if (!mounted) {
         return (
-            <div className="relative flex flex-col gap-2 bg-background rounded-3xl overflow-hidden h-fit">
+            <div className="relative flex flex-col gap-2 bg-background rounded-3xl overflow-hidden h-fit w-full">
                 <div className="flex flex-col p-4 px-6 gap-2">
                     <div className="hidden w-full gap-4 -mr-6 -mt-4 lg:flex lg:items-center">
                         <div className="relative w-20 h-20 rounded-3xl overflow-hidden">
@@ -40,29 +40,41 @@ export default function DinoPlan() {
                 <div className="flex flex-col p-4 px-6 gap-2">
                     <h4>ویژگی‌های برجسته:</h4>
                     <ul className="space-y-2">
-                        <li className="text-subtext flex gap-1 items-start">
+                        <li className="text-subtext flex gap-1 items-center">
                             <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            ایجاد، مدیریت و حذف دسته‌بندی‌های منو
+                            <p className="w-11/12">زیر دامنه‌ی اختصاصی (برای مثال mycafe.qrocs.ir)</p>
                         </li>
-                        <li className="text-subtext flex gap-1 items-start">
+                        <li className="text-subtext flex gap-1 items-center">
                             <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            ایجاد، مدیریت و حذف آیتم‌های منو
+                            <p className="w-11/12">ایجاد و دانلود کیوآر کد</p>
                         </li>
-                        <li className="text-subtext flex gap-1 items-start">
+                        <li className="text-subtext flex gap-1 items-center">
                             <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            ناموجود کردن بازه‌ای آیتم‌ها
+                            <p className="w-11/12">ایجاد، ویرایش و حذف دسته‌بندی‌ها</p>
                         </li>
-                        <li className="text-subtext flex gap-1 items-start">
+                        <li className="text-subtext flex gap-1 items-center">
                             <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            کیوآرکد ساز با امکان تغییر رنگ
+                            <p className="w-11/12">ایجاد، ویرایش و حذف آیتم‌ها و قیمت‌ها</p>
                         </li>
-                        <li className="text-subtext flex gap-1 items-start">
+                        <li className="text-subtext flex gap-1 items-center">
                             <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            پنل ادمین با سطوح دسترسی مختلف برای کارکنان کافه
+                            <p className="w-11/12">به‌روزرسانی خودکار منو بعد از تغییر</p>
                         </li>
-                        <li className="text-subtext flex gap-1 items-start">
+                        <li className="text-subtext flex gap-1 items-center">
                             <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            انتخاب زیردامنه‌ی اختصاصی (مانند:mycafe.qrocs.ir)
+                            <p className="w-11/12">منوی دیجیتال و داشبورد واکنش‌گرا (نمایش درست در موبایل، تبلت و دسکتاپ)</p>
+                        </li>
+                        <li className="text-subtext flex gap-1 items-center">
+                            <CheckCircle className="w-4 h-4 text-foreground mt-1" />
+                            <p className="w-11/12">نمایش آدرس و مختصات گوگل مپ در فوتر منوی دیجیتال</p>
+                        </li>
+                        <li className="text-subtext flex gap-1 items-center">
+                            <CheckCircle className="w-4 h-4 text-foreground mt-1" />
+                            <p className="w-11/12">نمایش شماره تلفن و حسابهای شبکه‌های اجتماعی مجموعه در فوتر منوی دیجیتال</p>
+                        </li>
+                        <li className="text-subtext flex gap-1 items-center">
+                            <CheckCircle className="w-4 h-4 text-foreground mt-1" />
+                            <p className="w-11/12">نمایش نام و شعار مجموعه</p>
                         </li>
                     </ul>
                 </div>
@@ -75,7 +87,7 @@ export default function DinoPlan() {
            )
     }
    return (
-    <div className="relative flex flex-col gap-2 bg-background rounded-3xl overflow-hidden h-fit">
+    <div className="relative flex flex-col gap-2 bg-background rounded-3xl overflow-hidden h-fit w-full">
         <div className="flex flex-col p-4 px-6 gap-2">
             <div className="hidden w-full gap-4 -mr-6 -mt-4 lg:flex lg:items-center">
                 <div className="relative w-20 h-20 rounded-3xl overflow-hidden border border-border">
@@ -105,29 +117,41 @@ export default function DinoPlan() {
         <div className="flex flex-col p-4 px-6 gap-2">
             <h4>ویژگی‌های برجسته:</h4>
             <ul className="space-y-2">
-                <li className="text-subtext flex gap-1 items-start">
+                <li className="text-subtext flex gap-1 items-center">
                     <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    ایجاد، مدیریت و حذف دسته‌بندی‌های منو
+                    <p className="w-11/12">زیر دامنه‌ی اختصاصی (برای مثال mycafe.qrocs.ir)</p>
                 </li>
-                <li className="text-subtext flex gap-1 items-start">
+                <li className="text-subtext flex gap-1 items-center">
                     <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    ایجاد، مدیریت و حذف آیتم‌های منو
+                    <p className="w-11/12">ایجاد و دانلود کیوآر کد</p>
                 </li>
-                <li className="text-subtext flex gap-1 items-start">
+                <li className="text-subtext flex gap-1 items-center">
                     <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    ناموجود کردن بازه‌ای آیتم‌ها
+                    <p className="w-11/12">ایجاد، ویرایش و حذف دسته‌بندی‌ها</p>
                 </li>
-                <li className="text-subtext flex gap-1 items-start">
+                <li className="text-subtext flex gap-1 items-center">
                     <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    کیوآرکد ساز با امکان تغییر رنگ
+                    <p className="w-11/12">ایجاد، ویرایش و حذف آیتم‌ها و قیمت‌ها</p>
                 </li>
-                <li className="text-subtext flex gap-1 items-start">
+                <li className="text-subtext flex gap-1 items-center">
                     <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    پنل ادمین با سطوح دسترسی مختلف برای کارکنان کافه
+                    <p className="w-11/12">به‌روزرسانی خودکار منو بعد از تغییر</p>
                 </li>
-                <li className="text-subtext flex gap-1 items-start">
+                <li className="text-subtext flex gap-1 items-center">
                     <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    انتخاب زیردامنه‌ی اختصاصی (مانند:mycafe.qrocs.ir)
+                    <p className="w-11/12">منوی دیجیتال و داشبورد واکنش‌گرا (نمایش درست در موبایل، تبلت و دسکتاپ)</p>
+                </li>
+                <li className="text-subtext flex gap-1 items-center">
+                    <CheckCircle className="w-4 h-4 text-foreground mt-1" />
+                    <p className="w-11/12">نمایش آدرس و مختصات گوگل مپ در فوتر منوی دیجیتال</p>
+                </li>
+                <li className="text-subtext flex gap-1 items-center">
+                    <CheckCircle className="w-4 h-4 text-foreground mt-1" />
+                    <p className="w-11/12">نمایش شماره تلفن و حسابهای شبکه‌های اجتماعی مجموعه در فوتر منوی دیجیتال</p>
+                </li>
+                <li className="text-subtext flex gap-1 items-center">
+                    <CheckCircle className="w-4 h-4 text-foreground mt-1" />
+                    <p className="w-11/12">نمایش نام و شعار مجموعه</p>
                 </li>
             </ul>
         </div>
