@@ -5,6 +5,23 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
+import GradientBorder from "../ui/gradientBorder";
+
+const features = [
+    "تمامی ویژگی‌های پلن داینو",
+    "یک عکس برای هر آیتم منو",
+    "صفحه‌ی فرود(خانه) با عکس، پیام خوشامدگوییو متن معرفی ثابت",
+    "صفحه‌ی کاتالوگ محصولات فروشگاهی شامل عنوان، توضیحات و عکس محصولات",
+    "صفحه‌ی گالری ثابت تصاویر با تقسیم‌بندی آلبوم",
+    "صفحه‌ی وبلاگ با 24 مقاله جهت افزایش امتیاز SEO",
+    "نمایش صحیح در تمام اندازه‌ها (گوشی، تبلت، دسکتاپ)",
+    "قابلیت ارسال نوتیفیکیشن در تمام سیستم‌های عامل (اندروید، ios و ویندوز)",
+    "فرم استخدام و همکاری",
+    "فرم نظر سنجی، پیشنهادات و انتقادات",
+    "ایجاد، ویرایش، حذف و تغییر ترتیب محصولات",
+    "ایجاد نوتیفیکیشن و ارسال گروهی به مشتریان",
+    "مدیریت، تأیید، پاسخ‌گویی و انتشار نظرات"
+]
 
 export default function RangoPlan({isMonthly} : {isMonthly: boolean}) {
     const { resolvedTheme, setTheme } = useTheme()
@@ -16,17 +33,69 @@ export default function RangoPlan({isMonthly} : {isMonthly: boolean}) {
     }, [])
     if (!mounted) {
         return (
-            <div className="relative flex flex-col gap-2 bg-background rounded-3xl overflow-hidden h-fit w-full">
-                <div className="flex flex-col p-4 px-6 gap-2">
-                    <div className="hidden w-full gap-4 -mr-6 -mt-4 lg:flex lg:items-center">
-                        <div className="relative w-20 h-20 rounded-3xl overflow-hidden">
-    
+            <GradientBorder color="border">
+                <div className="relative flex flex-col gap-2 bg-background rounded-3xl overflow-hidden h-fit w-full">
+                    <div className="flex flex-col p-4 px-6 gap-2">
+                        <div className="hidden w-full gap-4 -mr-6 -mt-4 lg:flex lg:items-center">
+                            <div className="relative w-20 h-20 rounded-3xl overflow-hidden border border-border">
+
+                            </div>
+                            <h3 className="text-2xl text-primary">رنگو</h3>
                         </div>
-                        <h3 className="text-2xl">رنگو</h3>
+                        <p className="text-subtext">رنگو بهت کمک میکنه با پالت رنگ و هویت بصری خودت منوی دیجیتالتو بسازی؛ و با اضافه کردن عکس آیتم‌ها به مشتریانت تو انتخاب سفارش کمک کنی...</p>
                     </div>
-                    <p className="text-subtext">رنگو بهت کمک میکنه با پالت رنگ و هویت بصری خودت منوی دیجیتالتو بسازی؛ و با اضافه کردن عکس آیتم‌ها به مشتریانت تو انتخاب سفارش کمک کنی...</p>
+                    <GradientBorder color="primary" left={false} right={false} radius="none">
+                        <div className="relative bg-primary/10 py-4 px-6 flex flex-col gap-4">
+                            <h4 className="text-2xl">{`${formatCurrency(25000000)} تومان `}</h4>
+                            <div className="w-full flex justify-center">
+                                <Link href={`/order?plan=rango&payment=${isMonthly?"monthly":"yearly"}`}>
+                                    <Button variant="default" className="w-36">
+                                        <p className="text-lg">سفارش رنگو</p>
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+                    </GradientBorder>
+                    <div className="flex flex-col p-4 px-6 gap-2">
+                        <h4>ویژگی‌های برجسته:</h4>
+                        <ul>
+                            {features.map((feature) => {
+                                return (
+                                    <GradientBorder color="border" right={false} left={false} bottom={false}>
+                                        <li className="text-subtext flex gap-2 py-2 items-center">
+                                            <CheckCircle className="w-4 h-4 text-foreground mt-1" />
+                                            <p className="w-full">
+                                                {feature}
+                                            </p>
+                                        </li>
+                                    </GradientBorder>
+                                )
+                            })}
+                        </ul>
+                    </div>
                 </div>
-                <div className="relative bg-foreground/10 py-4 px-6 flex flex-col gap-4">
+            </GradientBorder>
+           )
+    }
+   return (
+    <GradientBorder color="border">
+        <div className="relative flex flex-col gap-2 bg-background rounded-3xl overflow-hidden h-fit w-full">
+            <div className="flex flex-col p-4 px-6 gap-2">
+                <div className="hidden w-full gap-4 -mr-6 -mt-4 lg:flex lg:items-center">
+                    <div className="relative w-20 h-20 rounded-3xl overflow-hidden border border-border">
+                        <Image
+                            src={resolvedTheme === 'dark' ? `/rangoAvatarDark.png` : `/rangoAvatar.png`}
+                            alt="sdf"
+                            fill
+                            className="object-cover"
+                        />
+                    </div>
+                    <h3 className="text-2xl text-primary">رنگو</h3>
+                </div>
+                <p className="text-subtext">رنگو بهت کمک میکنه با پالت رنگ و هویت بصری خودت منوی دیجیتالتو بسازی؛ و با اضافه کردن عکس آیتم‌ها به مشتریانت تو انتخاب سفارش کمک کنی...</p>
+            </div>
+            <GradientBorder color="primary" left={false} right={false} radius="none">
+                <div className="relative bg-primary/10 py-4 px-6 flex flex-col gap-4">
                     <h4 className="text-2xl">{`${formatCurrency(25000000)} تومان `}</h4>
                     <div className="w-full flex justify-center">
                         <Link href={`/order?plan=rango&payment=${isMonthly?"monthly":"yearly"}`}>
@@ -35,108 +104,26 @@ export default function RangoPlan({isMonthly} : {isMonthly: boolean}) {
                             </Button>
                         </Link>
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
                 </div>
-                <div className="flex flex-col p-4 px-6 gap-2">
-                    <h4>ویژگی‌های برجسته:</h4>
-                    <ul className="space-y-2">
-                        <li className="text-subtext flex gap-1 items-center">
-                            <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            <p className="w-11/12">تمامی ویژگی‌های پلن داینو</p>
-                        </li>
-                        <li className="text-subtext flex gap-1 items-center">
-                            <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            <p className="w-11/12">نمایش لوگوی مجموعه</p>
-                        </li>
-                        <li className="text-subtext flex gap-1 items-center">
-                            <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            <p className="w-11/12">آپلود عکس برای آیتم‌های منو</p>
-                        </li>
-                        <li className="text-subtext flex gap-1 items-center">
-                            <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            <p className="w-11/12">انتخاب طرح‌بندی (layout) منو</p>
-                        </li>
-                        <li className="text-subtext flex gap-1 items-center">
-                            <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            <p className="w-11/12">انتخاب رنگ و فونت اختصاصی</p>
-                        </li>
-                        <li className="text-subtext flex gap-1 items-center">
-                            <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                            <p className="w-11/12">موجود/ناموجود کردن دستی آیتم‌های منو</p>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
-                <div className="absolute bottom-0 top-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-border to-transparent" />
-                <div className="absolute bottom-0 top-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-border to-transparent" />
+            </GradientBorder>
+            <div className="flex flex-col p-4 px-6 gap-2">
+                <h4>ویژگی‌های برجسته:</h4>
+                <ul>
+                    {features.map((feature) => {
+                        return (
+                            <GradientBorder color="border" right={false} left={false} bottom={false}>
+                                <li className="text-subtext flex gap-2 py-2 items-center">
+                                    <CheckCircle className="w-4 h-4 text-foreground mt-1" />
+                                    <p className="w-full">
+                                        {feature}
+                                    </p>
+                                </li>
+                            </GradientBorder>
+                        )
+                    })}
+                </ul>
             </div>
-           )
-    }
-   return (
-    <div className="relative flex flex-col gap-2 bg-background rounded-3xl overflow-hidden h-fit w-full">
-        <div className="flex flex-col p-4 px-6 gap-2">
-            <div className="hidden w-full gap-4 -mr-6 -mt-4 lg:flex lg:items-center">
-                <div className="relative w-20 h-20 rounded-3xl overflow-hidden border border-border">
-                    <Image
-                        src={resolvedTheme === 'dark' ? `/rangoAvatarDark.png` : `/rangoAvatar.png`}
-                        alt="sdf"
-                        fill
-                        className="object-cover"
-                    />
-                </div>
-                <h3 className="text-2xl text-primary">رنگو</h3>
-            </div>
-            <p className="text-subtext">رنگو بهت کمک میکنه با پالت رنگ و هویت بصری خودت منوی دیجیتالتو بسازی؛ و با اضافه کردن عکس آیتم‌ها به مشتریانت تو انتخاب سفارش کمک کنی...</p>
         </div>
-        <div className="relative bg-primary/10 py-4 px-6 flex flex-col gap-4">
-            <h4 className="text-2xl">{`${formatCurrency(25000000)} تومان `}</h4>
-            <div className="w-full flex justify-center">
-                <Link href={`/order?plan=rango&payment=${isMonthly?"monthly":"yearly"}`}>
-                    <Button variant="default" className="w-36">
-                        <p className="text-lg">سفارش رنگو</p>
-                    </Button>
-                </Link>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent" />
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent" />
-        </div>
-        <div className="flex flex-col p-4 px-6 gap-2">
-            <h4>ویژگی‌های برجسته:</h4>
-            <ul className="space-y-2">
-                <li className="text-subtext flex gap-1 items-center">
-                    <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    <p className="w-11/12">تمامی ویژگی‌های پلن داینو</p>
-                </li>
-                <li className="text-subtext flex gap-1 items-center">
-                    <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    <p className="w-11/12">نمایش لوگوی مجموعه</p>
-                </li>
-                <li className="text-subtext flex gap-1 items-center">
-                    <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    <p className="w-11/12">آپلود عکس برای آیتم‌های منو</p>
-                </li>
-                <li className="text-subtext flex gap-1 items-center">
-                    <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    <p className="w-11/12">انتخاب طرح‌بندی (layout) منو</p>
-                </li>
-                <li className="text-subtext flex gap-1 items-center">
-                    <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    <p className="w-11/12">انتخاب رنگ و فونت اختصاصی</p>
-                </li>
-                <li className="text-subtext flex gap-1 items-center">
-                    <CheckCircle className="w-4 h-4 text-foreground mt-1" />
-                    <p className="w-11/12">موجود/ناموجود کردن دستی آیتم‌های منو</p>
-                </li>
-            </ul>
-        </div>
-        
-        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
-        <div className="absolute bottom-0 top-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-border to-transparent" />
-        <div className="absolute bottom-0 top-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-border to-transparent" />
-    </div>
+    </GradientBorder>
    )
 }
