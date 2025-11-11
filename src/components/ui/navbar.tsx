@@ -37,7 +37,7 @@ export function Navbar() {
               <LuQrCode className="relative z-10 w-4 h-4 text-background" />
             </div>
             <h3 className="font-bold text-2xl bg-clip-text text-transparent bg-primary">
-             کراکس 
+             کردیت 
             </h3>
           </Link>
         </div>
@@ -112,7 +112,7 @@ export function Navbar() {
                 <LuQrCode className="relative z-10 w-4 h-4 text-background" />
               </div>
               <h3 className="font-bold text-2xl bg-clip-text text-transparent bg-primary">
-              کراکس 
+              کردیت 
               </h3>
             </Link>
             <Button

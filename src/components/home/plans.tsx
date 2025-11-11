@@ -100,7 +100,7 @@ export default function Plans() {
         return (
             <div className="relative overflow-clip flex flex-col items-center gap-4 w-full lg:px-48 py-6 bg-gradient-to-b from-background to-foreground/5">
                 <div className="bg-background/70 backdrop-blur-md w-full p-4 text-center sticky top-[3.75rem] sm:top-[4.5rem] z-10">
-                    <h2 className="text-3xl text-primary">پلن‌های کراکس</h2>
+                    <h2 className="text-3xl text-primary">پلن‌های کردیت</h2>
                     <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent"></div>
                 </div>
                 <Tabs
@@ -176,7 +176,7 @@ export default function Plans() {
   return (
     <div className="relative overflow-clip flex flex-col items-center gap-4 w-full lg:px-48 py-6 bg-gradient-to-b from-background to-foreground/5">
         <div className="bg-background/70 backdrop-blur-md w-full p-4 text-center sticky top-[3.75rem] sm:top-[4.5rem] z-10">
-            <h2 className="text-3xl text-primary">پلن‌های کراکس</h2>
+            <h2 className="text-3xl text-primary">پلن‌های کردیت</h2>
             <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent"></div>
         </div>
         <Tabs

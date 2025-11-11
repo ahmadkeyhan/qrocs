@@ -24,7 +24,7 @@ export default function Customers() {
     return (
         <div className="relative overflow-clip grid gap-4 sm:grid-cols-2 lg:grid-cols-3 w-full p-4 bg-subtext text-background">
           <div className="flex justify-center">
-            <h2 className="text-3xl">مشتریان کراکس</h2>
+            <h2 className="text-3xl">مشتریان کردیت</h2>
           </div>
           <div className="grid grid-cols-3 gap-2">
             {Customers.map((cus, index) => {
