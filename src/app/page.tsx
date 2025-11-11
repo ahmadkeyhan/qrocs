@@ -5,6 +5,7 @@ import Features from "@/components/home/features";
 import Plans from "@/components/home/plans";
 import Technologies from "@/components/home/technologies";
 import Faq from "@/components/home/faq";
+import Customers from "@/components/home/customers";
 
 export default function Home() {
   return (
@@ -12,7 +13,10 @@ export default function Home() {
       <main className="flex flex-col items-center">
         <Hero />
         <Features />
-        <Plans />
+        <Customers />
+        <div id="plans">
+          <Plans />
+        </div>
         <Technologies />
         <Faq />
       </main>
