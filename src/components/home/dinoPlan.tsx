@@ -16,7 +16,8 @@ const features = [
     "نمایش دسته‌بندی‌هاو آیتم‌های منو (عنوان، توضیح، مواد تشکیل‌دهنده، قیمت و آیکون)",
     "ایجاد، ویرایش، حذف و تغییر ترتیب دسته‌بندی‌هاو آیتم‌های منو",
     "موجود/ناموجود کردن دستی آیتم‌ها جهت نمایش و عدم نمایش در منو",
-    "مدیریت حسابهای کاربری و تعیین سطح دسترسی کاربران"
+    "مدیریت حسابهای کاربری و تعیین سطح دسترسی کاربران",
+    "ایجاد و ویرایش رنگ و طرح کیوآر کد آماده‌ی چاپ"
 ]
 
 export default function DinoPlan() {
@@ -34,7 +35,7 @@ export default function DinoPlan() {
                     <div className="flex flex-col p-4 px-6 gap-2">
                         <div className="hidden w-full gap-4 -mr-6 -mt-4 lg:flex lg:items-center">
                             <div className="relative w-20 h-20 rounded-3xl overflow-hidden border border-border">
-                                
+
                             </div>
                             <h3 className="text-2xl">داینو</h3>
                         </div>
