@@ -98,22 +98,11 @@ export default function Plans() {
     }, [])
     if (!mounted) {
         return (
-            <div className="relative overflow-clip flex flex-col items-center gap-4 w-full max-w-6xl py-6">
+            <div className="relative overflow-clip flex flex-col items-center gap-4 w-full lg:px-48 py-6 bg-gradient-to-b from-background to-foreground/5">
                 <div className="bg-background/70 backdrop-blur-md w-full p-4 text-center sticky top-[3.75rem] sm:top-[4.5rem] z-10">
                     <h2 className="text-3xl text-primary">پلن‌های کراکس</h2>
                     <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent"></div>
                 </div>
-
-                {/* <div className="flex justify-center items-center gap-2 w-full mb-2">
-                    <p>پرداخت ماهانه</p>
-                    <Switch 
-                        id="new-dialog-active"
-                        checked={isMonthly}
-                        onCheckedChange={(checked) => setIsmonthly(!isMonthly)}
-                    />
-                    <p>پرداخت سالانه</p>
-                </div> */}
-                {/* mobile and tablet features */}
                 <Tabs
                 defaultValue="dino"
                 value={currentTab}
@@ -185,22 +174,11 @@ export default function Plans() {
     }
 
   return (
-    <div className="relative overflow-clip flex flex-col items-center gap-4 w-full max-w-6xl py-6">
+    <div className="relative overflow-clip flex flex-col items-center gap-4 w-full lg:px-48 py-6 bg-gradient-to-b from-background to-foreground/5">
         <div className="bg-background/70 backdrop-blur-md w-full p-4 text-center sticky top-[3.75rem] sm:top-[4.5rem] z-10">
             <h2 className="text-3xl text-primary">پلن‌های کراکس</h2>
             <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-border to-transparent"></div>
         </div>
-
-        {/* <div className="flex justify-center items-center gap-2 w-full mb-2">
-            <p>پرداخت ماهانه</p>
-            <Switch 
-                id="new-dialog-active"
-                checked={isMonthly}
-                onCheckedChange={(checked) => setIsmonthly(!isMonthly)}
-            />
-            <p>پرداخت سالانه</p>
-        </div> */}
-        {/* mobile and tablet features */}
         <Tabs
           defaultValue="dino"
           value={currentTab}
