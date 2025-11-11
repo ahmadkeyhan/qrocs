@@ -27,7 +27,7 @@ export default function RangoPlan({isMonthly}:{isMonthly:boolean}) {
                     <p className="text-subtext">رنگو بهت کمک میکنه با پالت رنگ و هویت بصری خودت منوی دیجیتالتو بسازی؛ و با اضافه کردن عکس آیتم‌ها به مشتریانت تو انتخاب سفارش کمک کنی...</p>
                 </div>
                 <div className="relative bg-foreground/10 py-4 px-6 flex flex-col gap-4">
-                    <h4 className="text-2xl">{isMonthly ? `${formatCurrency(500)} هزار تومان ` : `${formatCurrency(5)} میلیون تومان `}<span className="text-base text-subtext mr-2">{isMonthly? "ماهانه" : "سالانه"}</span></h4>
+                <h4 className="text-2xl">{`${formatCurrency(40000000)} تومان `}</h4>
                     <div className="w-full flex justify-center">
                         <Link href={`/order?plan=croco&payment=${isMonthly?"monthly":"yearly"}`}>
                             <Button variant="default" className="w-36 bg-amber-400 dark:bg-amber-300">
@@ -100,7 +100,7 @@ export default function RangoPlan({isMonthly}:{isMonthly:boolean}) {
             <p className="text-subtext">رنگو بهت کمک میکنه با پالت رنگ و هویت بصری خودت منوی دیجیتالتو بسازی؛ و با اضافه کردن عکس آیتم‌ها به مشتریانت تو انتخاب سفارش کمک کنی...</p>
         </div>
         <div className="relative bg-amber-400/10 py-4 px-6 flex flex-col gap-4">
-            <h4 className="text-2xl">{isMonthly ? `${formatCurrency(500)} هزار تومان ` : `${formatCurrency(5)} میلیون تومان `}<span className="text-base text-subtext mr-2">{isMonthly? "ماهانه" : "سالانه"}</span></h4>
+            <h4 className="text-2xl">{`${formatCurrency(40000000)} تومان `}</h4>
             <div className="w-full flex justify-center">
                 <Link href={`/order?plan=croco&payment=${isMonthly?"monthly":"yearly"}`}>
                     <Button variant="default" className="w-36 bg-amber-400 dark:bg-amber-300">

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
+import { formatCurrency } from "@/lib/utils";
 
 export default function DinoPlan() {
     const { resolvedTheme, setTheme } = useTheme()
@@ -26,7 +27,7 @@ export default function DinoPlan() {
                     <p className="text-subtext">داینو بهت کمک میکنه تو چند دقیقه منوی دیجیتال خودتو بسازی؛ و تو چند ثانیه بارگزاریش کنی! هرموقع هم که لازم شد تغییرش بدی...</p>
                 </div>
                 <div className="relative bg-foreground/10 py-4 px-6 flex flex-col gap-4">
-                    <h4 className="text-2xl">رایگان</h4>
+                    <h4 className="text-2xl">{`${formatCurrency(10000000)} تومان `}</h4>
                     <div className="w-full flex justify-center">
                         <Link href='/order?plan=dino'>
                             <Button variant="default" className="w-36 bg-foreground">
@@ -103,7 +104,7 @@ export default function DinoPlan() {
             <p className="text-subtext">داینو بهت کمک میکنه تو چند دقیقه منوی دیجیتال خودتو بسازی؛ و تو چند ثانیه بارگزاریش کنی! هرموقع هم که لازم شد تغییرش بدی...</p>
         </div>
         <div className="relative bg-foreground/10 py-4 px-6 flex flex-col gap-4">
-            <h4 className="text-2xl">رایگان</h4>
+            <h4 className="text-2xl">{`${formatCurrency(10000000)} تومان `}</h4>
             <div className="w-full flex justify-center">
                 <Link href='/order?plan=dino'>
                     <Button variant="default" className="w-36 bg-foreground">
