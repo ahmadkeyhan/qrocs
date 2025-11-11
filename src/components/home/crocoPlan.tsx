@@ -39,7 +39,7 @@ export default function RangoPlan({isMonthly}:{isMonthly:boolean}) {
                     <div className="flex flex-col p-4 px-6 gap-2">
                         <div className="hidden w-full gap-4 -mr-6 -mt-4 lg:flex lg:items-center">
                             <div className="relative w-20 h-20 rounded-3xl overflow-hidden border border-border">
-                                
+
                             </div>
                             <h3 className="text-2xl text-amber-400 dark:text-amber-300">کروکو</h3>
                         </div>
@@ -62,7 +62,7 @@ export default function RangoPlan({isMonthly}:{isMonthly:boolean}) {
                         <ul>
                             {features.map((feature) => {
                                 return (
-                                    <GradientBorder color="border" right={false} left={false} bottom={false}>
+                                    <GradientBorder key={feature} color="border" right={false} left={false} bottom={false}>
                                         <li className="text-subtext flex gap-2 py-2 items-center">
                                             <CheckCircle className="w-4 h-4 text-amber-400 mt-1" />
                                             <p className="w-full">
@@ -112,7 +112,7 @@ export default function RangoPlan({isMonthly}:{isMonthly:boolean}) {
                 <ul>
                     {features.map((feature) => {
                         return (
-                            <GradientBorder color="border" right={false} left={false} bottom={false}>
+                            <GradientBorder key={feature} color="border" right={false} left={false} bottom={false}>
                                 <li className="text-subtext flex gap-2 py-2 items-center">
                                     <CheckCircle className="w-4 h-4 text-amber-400 mt-1" />
                                     <p className="w-full">

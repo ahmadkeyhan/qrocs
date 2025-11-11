@@ -60,7 +60,7 @@ export default function DinoPlan() {
                         <ul>
                             {features.map((feature) => {
                                 return (
-                                    <GradientBorder color="border" right={false} left={false} bottom={false}>
+                                    <GradientBorder key={feature} color="border" right={false} left={false} bottom={false}>
                                         <li className="text-subtext flex gap-2 py-2 items-center">
                                             <CheckCircle className="w-4 h-4 text-foreground mt-1" />
                                             <p className="w-full">
@@ -110,7 +110,7 @@ export default function DinoPlan() {
                 <ul>
                     {features.map((feature) => {
                         return (
-                            <GradientBorder color="border" right={false} left={false} bottom={false}>
+                            <GradientBorder key={feature} color="border" right={false} left={false} bottom={false}>
                                 <li className="text-subtext flex gap-2 py-2 items-center">
                                     <CheckCircle className="w-4 h-4 text-foreground mt-1" />
                                     <p className="w-full">
