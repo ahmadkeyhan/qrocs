@@ -46,7 +46,7 @@ export default function RangoPlan() {
                         <p className="text-subtext">رنگو بهت کمک میکنه با پالت رنگ و هویت بصری خودت منوی دیجیتالتو بسازی؛ و با اضافه کردن عکس آیتم‌ها به مشتریانت تو انتخاب سفارش کمک کنی...</p>
                     </div>
                     <GradientBorder color="amber-400" left={false} right={false} radius="none">
-                        <div className="relative bg-amber-400/10 py-4 px-6 flex flex-col gap-4">
+                        <div className="relative bg-amber-400/10 py-4 px-6 flex flex-col items-center gap-4">
                             <h4 className="text-2xl">{`${formatCurrency(40000000)} تومان `}</h4>
                             <div className="w-full flex justify-center">
                                 <Link href={`/order?plan=croco`}>
@@ -96,7 +96,7 @@ export default function RangoPlan() {
                 <p className="text-subtext">رنگو بهت کمک میکنه با پالت رنگ و هویت بصری خودت منوی دیجیتالتو بسازی؛ و با اضافه کردن عکس آیتم‌ها به مشتریانت تو انتخاب سفارش کمک کنی...</p>
             </div>
             <GradientBorder color="amber-400" left={false} right={false} radius="none">
-                <div className="relative bg-amber-400/10 py-4 px-6 flex flex-col gap-4">
+                <div className="relative bg-amber-400/10 py-4 px-6 flex flex-col items-center gap-4">
                     <h4 className="text-2xl">{`${formatCurrency(40000000)} تومان `}</h4>
                     <div className="w-full flex justify-center">
                         <Link href={`/order?plan=croco`}>

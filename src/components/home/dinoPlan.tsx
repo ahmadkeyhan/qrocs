@@ -44,7 +44,7 @@ export default function DinoPlan() {
                         <p className="text-subtext">داینو بهت کمک میکنه تو چند دقیقه منوی دیجیتال خودتو بسازی؛ و تو چند ثانیه بارگزاریش کنی! هرموقع هم که لازم شد تغییرش بدی...</p>
                     </div>
                     <GradientBorder color="border" left={false} right={false} radius="none">
-                        <div className="relative bg-foreground/10 py-4 px-6 flex flex-col gap-4">
+                        <div className="relative bg-foreground/10 py-4 px-6 flex flex-col items-center gap-4">
                             <h4 className="text-2xl">{`${formatCurrency(10000000)} تومان `}</h4>
                             <div className="w-full flex justify-center">
                                 <Link href='/order?plan=dino'>
@@ -94,7 +94,7 @@ export default function DinoPlan() {
                 <p className="text-subtext">داینو بهت کمک میکنه تو چند دقیقه منوی دیجیتال خودتو بسازی؛ و تو چند ثانیه بارگزاریش کنی! هرموقع هم که لازم شد تغییرش بدی...</p>
             </div>
             <GradientBorder color="border" left={false} right={false} radius="none">
-                <div className="relative bg-foreground/10 py-4 px-6 flex flex-col gap-4">
+                <div className="relative bg-foreground/10 py-4 px-6 flex flex-col items-center gap-4">
                     <h4 className="text-2xl">{`${formatCurrency(10000000)} تومان `}</h4>
                     <div className="w-full flex justify-center">
                         <Link href='/order?plan=dino'>
