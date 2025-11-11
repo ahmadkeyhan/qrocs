@@ -63,7 +63,7 @@ export default function RangoPlan({isMonthly} : {isMonthly: boolean}) {
                                 return (
                                     <GradientBorder color="border" right={false} left={false} bottom={false}>
                                         <li className="text-subtext flex gap-2 py-2 items-center">
-                                            <CheckCircle className="w-4 h-4 text-foreground mt-1" />
+                                            <CheckCircle className="w-4 h-4 text-primary mt-1" />
                                             <p className="w-full">
                                                 {feature}
                                             </p>
@@ -113,7 +113,7 @@ export default function RangoPlan({isMonthly} : {isMonthly: boolean}) {
                         return (
                             <GradientBorder color="border" right={false} left={false} bottom={false}>
                                 <li className="text-subtext flex gap-2 py-2 items-center">
-                                    <CheckCircle className="w-4 h-4 text-foreground mt-1" />
+                                    <CheckCircle className="w-4 h-4 text-primary mt-1" />
                                     <p className="w-full">
                                         {feature}
                                     </p>
