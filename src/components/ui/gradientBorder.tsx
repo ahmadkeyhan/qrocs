@@ -18,7 +18,7 @@ export default function GradientBorder({
     radius?: string
 }) {
     return (
-        <div className={`relative rounded-${radius} overflow-hidden w-full`}>
+        <div className={`relative rounded-${radius} overflow-hidden w-full h-fit`}>
             {children}
             {bottom && <div className={`absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-${color} to-transparent`}></div>}
             {top && <div className={`absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-${color} to-transparent`}></div>}
