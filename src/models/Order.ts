@@ -11,7 +11,6 @@ export interface IOrder {
   city: string
   province: string
   plan: string
-  paymantPeriod: string
   createdAt?: Date
   updatedAt?: Date
 }
@@ -25,7 +24,6 @@ const orderSchema = new Schema<IOrder>(
     city: {type: String, required: true},
     province: {type: String, required: true},
     plan: {type: String, required: true},
-    paymantPeriod: {type: String, required: true},
   },
   {
     timestamps: true,

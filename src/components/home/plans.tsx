@@ -11,7 +11,6 @@ import { motion, AnimatePresence } from "framer-motion"
 export default function Plans() {
     const { resolvedTheme, setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
-    const [isMonthly, setIsmonthly] = useState(true)
 
     const [isTablet, setIsTablet] = useState(false)
 
@@ -84,9 +83,9 @@ export default function Plans() {
         case "dino":
             return <DinoPlan />
         case "rango":
-            return <RangoPlan isMonthly={false} />
+            return <RangoPlan />
         case "croco":
-            return <CrocoPlan isMonthly={false} />
+            return <CrocoPlan />
         default:
             return <DinoPlan />
         }
@@ -154,8 +153,8 @@ export default function Plans() {
                 {/* desktop features */}
                 <div className="hidden lg:flex gap-6 mb-6">
                     <DinoPlan />
-                    <RangoPlan isMonthly={false} />
-                    <CrocoPlan isMonthly={false} />
+                    <RangoPlan />
+                    <CrocoPlan />
                 </div>
 
                 <Button variant="default" size="lg" className="relative w-40 rounded-full overflow-hidden bg-foreground text-background">
@@ -245,8 +244,8 @@ export default function Plans() {
         {/* desktop features */}
         <div className="hidden lg:flex gap-6 mb-6">
             <DinoPlan />
-            <RangoPlan isMonthly={false} />
-            <CrocoPlan isMonthly={false} />
+            <RangoPlan />
+            <CrocoPlan />
         </div>
 
         <Button variant="default" size="lg" className="relative w-40 rounded-full overflow-hidden bg-foreground text-background">

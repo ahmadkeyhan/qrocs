@@ -24,7 +24,7 @@ const features = [
     "موجود/ناموجود کردن اتوماتیک آیتم‌ها و دسته‌بندی‌ها در ساعات یا روزهای معین"
 ]
 
-export default function RangoPlan({isMonthly}:{isMonthly:boolean}) {
+export default function RangoPlan() {
     const { resolvedTheme, setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
   
@@ -49,7 +49,7 @@ export default function RangoPlan({isMonthly}:{isMonthly:boolean}) {
                         <div className="relative bg-amber-400/10 py-4 px-6 flex flex-col gap-4">
                             <h4 className="text-2xl">{`${formatCurrency(40000000)} تومان `}</h4>
                             <div className="w-full flex justify-center">
-                                <Link href={`/order?plan=croco&payment=${isMonthly?"monthly":"yearly"}`}>
+                                <Link href={`/order?plan=croco`}>
                                     <Button variant="default" className="w-36 bg-amber-400 dark:bg-amber-300">
                                         <p className="text-lg">سفارش کروکو</p>
                                     </Button>
@@ -99,7 +99,7 @@ export default function RangoPlan({isMonthly}:{isMonthly:boolean}) {
                 <div className="relative bg-amber-400/10 py-4 px-6 flex flex-col gap-4">
                     <h4 className="text-2xl">{`${formatCurrency(40000000)} تومان `}</h4>
                     <div className="w-full flex justify-center">
-                        <Link href={`/order?plan=croco&payment=${isMonthly?"monthly":"yearly"}`}>
+                        <Link href={`/order?plan=croco`}>
                             <Button variant="default" className="w-36 bg-amber-400 dark:bg-amber-300">
                                 <p className="text-lg">سفارش کروکو</p>
                             </Button>

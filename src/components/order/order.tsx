@@ -21,16 +21,13 @@ interface FormOrderData {
     city: string
     province: string
     plan: string
-    paymantPeriod: string
 }
 
 export default function Order() {
     const searchParams = useSearchParams()
     const plan = searchParams.get('plan')
-    const paymentPeriod = searchParams.get('payment')
     const [provinceId, setProvinceId] = useState()
     const provinces = cities.filter((city) => city.type === "province").sort((a,b) => a.name.localeCompare(b.name))
-    // const turk = cities.filter((city) => city.type === "county" && city["province_id"] === 103)
 
     const [newOrder, setNewOrder] = useState<FormOrderData>({
         storeName: "",
@@ -40,7 +37,6 @@ export default function Order() {
         city: "",
         province: "",
         plan: plan? plan : "",
-        paymantPeriod: paymentPeriod? paymentPeriod : ""
     });
     const [isLoading, setIsLoading] = useState(false);
     
@@ -50,11 +46,7 @@ export default function Order() {
         e.preventDefault();
         try {
             setIsLoading(true);
-            if (newOrder.plan !== "dino") {
-                await createOrder(newOrder);
-            } else {
-                await createOrder({...newOrder, paymantPeriod: "monthly"});
-            }
+            await createOrder(newOrder);
             
             setNewOrder({
                 storeName: "",
@@ -64,7 +56,6 @@ export default function Order() {
                 city: "",
                 province: "",
                 plan: plan? plan : "",
-                paymantPeriod: paymentPeriod? paymentPeriod : ""
             });
 
             toast({
@@ -81,10 +72,6 @@ export default function Order() {
 
     const handlePlanChange = (value: string) => {
         setNewOrder({ ...newOrder, plan: value });
-    };
-
-    const handlePaymentPeriodChange = (value: string) => {
-        setNewOrder({ ...newOrder, paymantPeriod: value });
     };
 
     return (
@@ -194,31 +181,6 @@ export default function Order() {
                                     <Label className="text-lg font-medium" htmlFor="croco">کروکو</Label>
                                 </div>
                             </RadioGroup>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            {newOrder.plan && newOrder.plan !== 'dino' && 
-                                <>
-                                    <Label className="text-lg font-medium">
-                                        بازه‌ی پرداخت دلخواه:
-                                    </Label>
-                                    <RadioGroup
-                                        dir="rtl"
-                                        value={newOrder.paymantPeriod}
-                                        onValueChange={handlePaymentPeriodChange}
-                                        className="flex gap-4"
-                                        required
-                                    >
-                                        <div className="flex items-center gap-1">
-                                            <RadioGroupItem value="monthly" id="monthly" />
-                                            <Label className="text-base font-medium" htmlFor="monthly">ماهانه {formatCurrency(newOrder.plan === "rango" ? 300 : 500)} هزار تومان</Label>
-                                        </div>
-                                        <div className="flex items-center gap-1">
-                                            <RadioGroupItem value="yearly" id="yearly" />
-                                            <Label className="text-base font-medium" htmlFor="yearly">سالانه {formatCurrency(newOrder.plan === "rango" ? 3 : 5)} میلیون تومان</Label>
-                                        </div>
-                                    </RadioGroup>
-                                </>
-                            }
                         </div>
                         <div className="flex justify-end sm:col-span-2">
                             <Button
