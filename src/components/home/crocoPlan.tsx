@@ -64,7 +64,7 @@ export default function RangoPlan() {
                                 return (
                                     <GradientBorder key={feature} color="border" right={false} left={false} bottom={false}>
                                         <li className="text-subtext flex gap-2 py-2 items-center">
-                                            <CheckCircle className="w-4 h-4 text-amber-400 mt-1" />
+                                            <CheckCircle className="w-4 h-4 text-amber-400 dark:text-amber-300 mt-1" />
                                             <p className="w-full">
                                                 {feature}
                                             </p>
@@ -114,7 +114,7 @@ export default function RangoPlan() {
                         return (
                             <GradientBorder key={feature} color="border" right={false} left={false} bottom={false}>
                                 <li className="text-subtext flex gap-2 py-2 items-center">
-                                    <CheckCircle className="w-4 h-4 text-amber-400 mt-1" />
+                                    <CheckCircle className="w-4 h-4 text-amber-400 dark:text-amber-300 mt-1" />
                                     <p className="w-full">
                                         {feature}
                                     </p>
