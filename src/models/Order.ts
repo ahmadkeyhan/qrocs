@@ -11,6 +11,10 @@ export interface IOrder {
   city: string
   province: string
   plan: string
+  customOrder?: {
+    selectedFeatures: Record<string, string>; // featureId -> optionId
+    totalPrice: number;
+  }
   createdAt?: Date
   updatedAt?: Date
 }
@@ -24,6 +28,13 @@ const orderSchema = new Schema<IOrder>(
     city: {type: String, required: true},
     province: {type: String, required: true},
     plan: {type: String, required: true},
+    customOrder: {
+      type: {
+        selectedFeatures: { type: Map, of: String },
+        totalPrice: { type: Number },
+      },
+      required: false,
+    },
   },
   {
     timestamps: true,
@@ -40,4 +51,3 @@ const orderSchema = new Schema<IOrder>(
 )
 
 export const Order = mongoose.models?.Order || model<IOrder>("Order", orderSchema)
-
