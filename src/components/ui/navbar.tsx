@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 const navItems = [
   { name: "خانه", href: "/" },
   { name: "سفارش منو", href: "/order" },
-  { name: "طرح‌ها", href: "/plans" },
+  { name: "پلن‌ها", href: "/plans" },
   { name: "مستندات", href: "/docs" },
   { name: "درباره‌ی ما", href: "/about" },
 ]

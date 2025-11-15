@@ -121,7 +121,7 @@ export default function Order() {
         return (
             <div className="min-h-screen pb-20 pt-2">
                 <main className="flex flex-col items-center min-h-screen p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
-                    <h1 className="text-3xl text-primary">انتخاب طرح</h1>
+                    <h1 className="text-3xl text-primary">انتخاب پلن</h1>
                     
                     <div className="grid gap-6 w-full max-w-4xl sm:grid-cols-2 lg:grid-cols-4">
                         {/* Dino Plan */}
@@ -231,10 +231,10 @@ export default function Order() {
                         <div className="flex items-center gap-2">
                             <CheckCircle className="w-6 h-6 text-primary" />
                             <span className="text-lg font-semibold">
-                                {selectedPlan === 'dino' && 'طرح داینو'}
-                                {selectedPlan === 'rango' && 'طرح رنگو'}
-                                {selectedPlan === 'croco' && 'طرح کروکو'}
-                                {selectedPlan === 'custom' && 'سفارش سفارشی'}
+                                {selectedPlan === 'dino' && 'پلن داینو'}
+                                {selectedPlan === 'rango' && 'پلن رنگو'}
+                                {selectedPlan === 'croco' && 'پلن کروکو'}
+                                {selectedPlan === 'custom' && 'پلن کاستوم'}
                             </span>
                         </div>
                         <span className="text-xl font-bold text-primary">
@@ -254,7 +254,7 @@ export default function Order() {
                             }}
                             className="mt-4"
                         >
-                            تغییر طرح
+                            تغییر پلن
                         </Button>
                     )}
                 </Card>
