@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { useSearchParams } from 'next/navigation'
 import {cities} from "@/components/order/cities"
 import ProvinceSelector from "@/components/order/provinceSelector";
@@ -14,6 +14,9 @@ import { Button } from "@/components/ui/button";
 import CustomOrderBuilder from "./customOrderBuilder";
 import { Card } from "@/components/ui/card";
 import { CheckCircle } from 'lucide-react';
+import { useTheme } from "next-themes";
+import Image from "next/image";
+import GradientBorder from "../ui/gradientBorder";
 
 interface FormOrderData {
     storeName: string
@@ -30,6 +33,12 @@ interface FormOrderData {
 }
 
 export default function Order() {
+    const { resolvedTheme, setTheme } = useTheme()
+    const [mounted, setMounted] = useState(false)
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
     const searchParams = useSearchParams()
     const planParam = searchParams.get('plan')
     
@@ -120,83 +129,111 @@ export default function Order() {
     if (currentStep === 'plan') {
         return (
             <div className="min-h-screen pb-20 pt-2">
-                <main className="flex flex-col items-center min-h-screen p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
+                <main className="flex flex-col items-center min-h-screen p-4 gap-6 bg-gradient-to-b from-background via-foreground/10 to-foreground/10">
                     <h1 className="text-3xl text-primary">انتخاب پلن</h1>
                     
-                    <div className="grid gap-6 w-full max-w-4xl sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="grid gap-4 w-full max-w-4xl sm:grid-cols-2 lg:grid-cols-4">
                         {/* Dino Plan */}
                         <Card 
-                            className="relative p-6 cursor-pointer hover:shadow-lg transition-shadow"
+                            className="flex items-end bg-background cursor-pointer hover:shadow-lg transition-shadow"
                             onClick={() => handlePlanSelection('dino')}
                         >
-                            <div className="flex flex-col items-center gap-4">
-                                <h3 className="text-2xl font-bold">داینو</h3>
-                                <p className="text-center text-sm text-subtext">
-                                    پلن پایه برای شروع سریع
+                            <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
+                                {mounted && <Image
+                                    src={resolvedTheme === 'dark' ? `/dinoAvatarDark.png` : `/dinoAvatar.png`}
+                                    alt="sdf"
+                                    fill
+                                    className="object-cover"
+                                />}
+                            </div>
+                            <div className="flex flex-col grow gap-4 p-6 pr-2">
+                                <div className="flex justify-between items-center">
+                                    <h3 className="text-2xl">داینو</h3>
+                                    <p className="text-lg font-bold">
+                                        {formatCurrency(10000000)} <span className="text-sm">تومان</span>
+                                    </p>
+                                </div>
+                                <GradientBorder color="border" bottom={false} right={false} left={false} radius="none">
+                                    <p className="text-subtext pt-4 text-sm">
+                                    امکانات ضروری منوی دیجیتال با کمترین هزینه
                                 </p>
-                                <p className="text-xl font-bold text-primary">
-                                    {formatCurrency(10)} میلیون تومان
-                                </p>
-                                <Button variant="default" className="w-full">
-                                    انتخاب داینو
-                                </Button>
+                                </GradientBorder>
                             </div>
                         </Card>
 
                         {/* Rango Plan */}
                         <Card 
-                            className="relative p-6 cursor-pointer hover:shadow-lg transition-shadow"
+                            className="flex items-end bg-primary cursor-pointer hover:shadow-lg transition-shadow"
                             onClick={() => handlePlanSelection('rango')}
                         >
-                            <div className="flex flex-col items-center gap-4">
-                                <h3 className="text-2xl font-bold text-primary">رنگو</h3>
-                                <p className="text-center text-sm text-subtext">
-                                    پلن پیشرفته با امکانات بیشتر
+                            <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
+                                {mounted && <Image
+                                    src={resolvedTheme === 'dark' ? `/rangoAvatarDark.png` : `/rangoAvatar.png`}
+                                    alt="sdf"
+                                    fill
+                                    className="object-cover"
+                                />}
+                            </div>
+                            <div className="flex flex-col grow gap-4 p-6 pr-2">
+                                <div className="flex justify-between items-center">
+                                    <h3 className="text-2xl text-background">رنگو</h3>
+                                    <p className="text-lg text-background font-bold">
+                                        {formatCurrency(25000000)} <span className="text-sm">تومان</span>
+                                    </p>
+                                </div>
+                                <GradientBorder color="white" bottom={false} right={false} left={false} radius="none">
+                                    <p className="text-white/70 pt-4 text-sm">
+                                    امکانات پیشرفته‌ی منوی دیجیتال با {formatCurrency(10)}% تخفیف
                                 </p>
-                                <p className="text-xl font-bold text-primary">
-                                    {formatCurrency(25)} میلیون تومان
-                                </p>
-                                <Button variant="default" className="w-full">
-                                    انتخاب رنگو
-                                </Button>
+                                </GradientBorder>
                             </div>
                         </Card>
 
                         {/* Croco Plan */}
                         <Card 
-                            className="relative p-6 cursor-pointer hover:shadow-lg transition-shadow"
+                            className="flex items-end bg-background cursor-pointer hover:shadow-lg transition-shadow"
                             onClick={() => handlePlanSelection('croco')}
                         >
-                            <div className="flex flex-col items-center gap-4">
-                                <h3 className="text-2xl font-bold text-amber-400 dark:text-amber-300">کروکو</h3>
-                                <p className="text-center text-sm text-subtext">
-                                    پلن کامل با تمام امکانات
+                            <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
+                                {mounted && <Image
+                                    src={resolvedTheme === 'dark' ? `/crocoAvatarDark.png` : `/crocoAvatar.png`}
+                                    alt="sdf"
+                                    fill
+                                    className="object-cover"
+                                />}
+                            </div>
+                            <div className="flex flex-col grow gap-4 p-6 pr-2">
+                                <div className="flex justify-between items-center">
+                                    <h3 className="text-2xl text-amber-400 dark:text-amber-300">کروکو</h3>
+                                    <p className="text-lg text-foreground font-bold">
+                                        {formatCurrency(40000000)} <span className="text-sm">تومان</span>
+                                    </p>
+                                </div>
+                                <GradientBorder color="border" bottom={false} right={false} left={false} radius="none">
+                                    <p className="text-subtext pt-4 text-sm">
+                                   تمام امکانات منوی دیجیتال کردیت با {formatCurrency(15)}% تخفیف
                                 </p>
-                                <p className="text-xl font-bold text-amber-400 dark:text-amber-300">
-                                    {formatCurrency(40)} میلیون تومان
-                                </p>
-                                <Button variant="default" className="w-full bg-amber-400 dark:bg-amber-300">
-                                    انتخاب کروکو
-                                </Button>
+                                </GradientBorder>
                             </div>
                         </Card>
 
                         {/* Custom Plan */}
                         <Card 
-                            className="relative p-6 cursor-pointer hover:shadow-lg transition-shadow border-2 border-primary"
+                            className="flex items-end bg-background cursor-pointer hover:shadow-lg transition-shadow"
                             onClick={() => handlePlanSelection('custom')}
                         >
-                            <div className="flex flex-col items-center gap-4">
-                                <h3 className="text-2xl font-bold text-primary">سفارشی</h3>
-                                <p className="text-center text-sm text-subtext">
-                                    بسازید آنچه را که نیاز دارید
+                            <div className="flex flex-col grow gap-4 p-6">
+                                <div className="flex justify-between items-center">
+                                    <h3 className="text-2xl">کاستوم</h3>
+                                    <p className="text-lg font-bold">
+                                        <span className="text-sm">شروع از</span> {formatCurrency(10000000)} <span className="text-sm">تومان</span>
+                                    </p>
+                                </div>
+                                <GradientBorder color="border" bottom={false} right={false} left={false} radius="none">
+                                    <p className="text-subtext pt-4 text-sm">
+                                   هیچ کدوم از پلن‌ها مناسب نیازت نیست؟ ویژگی‌های مد نظرت رو انتخاب کن و سفارش شخصی‌سازی شده بده! 
                                 </p>
-                                <p className="text-xl font-bold text-primary">
-                                    از {formatCurrency(10)} میلیون تومان
-                                </p>
-                                <Button variant="default" className="w-full">
-                                    ساخت سفارشی
-                                </Button>
+                                </GradientBorder>
                             </div>
                         </Card>
                     </div>
@@ -208,7 +245,7 @@ export default function Order() {
     if (currentStep === 'custom' && !customBuilderCompleted) {
         return (
             <div className="min-h-screen pb-20 pt-2">
-                <main className="flex flex-col items-center min-h-screen p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
+                <main className="flex flex-col items-center min-h-screen p-4 gap-6 bg-gradient-to-b from-background via-foreground/10 to-foreground/10">
                     <CustomOrderBuilder 
                         selectedFeatures={customFeatures}
                         onFeaturesChange={setCustomFeatures}
@@ -222,41 +259,55 @@ export default function Order() {
 
     return (
         <div className="min-h-screen pb-20 pt-2">
-            <main className="flex flex-col items-center min-h-screen p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
+            <main className="flex flex-col items-center min-h-screen p-4 gap-4 bg-gradient-to-b from-background via-foreground/10 to-foreground/10">
                 <h1 className="text-3xl text-primary">سفارش منوی دیجیتال</h1>
                 
                 {/* Selected Plan Summary */}
-                <Card className="w-full max-w-2xl p-6">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                            <CheckCircle className="w-6 h-6 text-primary" />
-                            <span className="text-lg font-semibold">
-                                {selectedPlan === 'dino' && 'پلن داینو'}
-                                {selectedPlan === 'rango' && 'پلن رنگو'}
-                                {selectedPlan === 'croco' && 'پلن کروکو'}
-                                {selectedPlan === 'custom' && 'پلن کاستوم'}
-                            </span>
+                <Card 
+                    className={`flex items-end ${selectedPlan === "rango" ? "bg-primary" : "bg-background"} cursor-pointer hover:shadow-lg transition-shadow`}
+                >
+                    {selectedPlan !== 'custom' && <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
+                        {mounted && <Image
+                            src={
+                                resolvedTheme === 'dark' && selectedPlan === 'dino' ? `/dinoAvatarDark.png` :
+                                resolvedTheme === 'light' && selectedPlan === 'dino' ? `/dinoAvatar.png` :
+                                resolvedTheme === 'dark' && selectedPlan === 'rango' ? `/rangoAvatarDark.png` :
+                                resolvedTheme === 'light' && selectedPlan === 'rango' ? `/rangoAvatar.png` :
+                                resolvedTheme === 'dark' && selectedPlan === 'croco' ? `/crocoAvatarDark.png` :
+                                `/crocoAvatar.png`
+                                }
+                            alt="sdf"
+                            fill
+                            className="object-cover"
+                        />}
+                    </div>}
+                    <div className="flex flex-col grow gap-4 p-6">
+                        <div className={`flex justify-between items-center ${selectedPlan === "rango" ? "text-background" : "text-foreground"}`}>
+                            <h3 className="text-2xl">
+                                {selectedPlan === 'dino' && 'داینو'}
+                                {selectedPlan === 'rango' && 'رنگو'}
+                                {selectedPlan === 'croco' && 'کروکو'}
+                                {selectedPlan === 'custom' && 'کاستوم'}
+                            </h3>
+                            <p className="text-lg font-bold">
+                                {selectedPlan === 'dino' && `${formatCurrency(10000000)}`}
+                                {selectedPlan === 'rango' && `${formatCurrency(25000000)}`}
+                                {selectedPlan === 'croco' && `${formatCurrency(40000000)}`}
+                                {selectedPlan === 'custom' && `${formatCurrency(customPrice*1000000)}`}
+                                <span className="text-sm"> تومان</span>
+                            </p>
                         </div>
-                        <span className="text-xl font-bold text-primary">
-                            {selectedPlan === 'dino' && `${formatCurrency(10)} میلیون تومان`}
-                            {selectedPlan === 'rango' && `${formatCurrency(25)} میلیون تومان`}
-                            {selectedPlan === 'croco' && `${formatCurrency(40)} میلیون تومان`}
-                            {selectedPlan === 'custom' && `${formatCurrency(customPrice)} میلیون تومان`}
-                        </span>
-                    </div>
-                    {!planParam && (
-                        <Button 
-                            variant="ghost" 
+                        {selectedPlan !== "custom" && <Button 
                             size="sm" 
                             onClick={() => {
                                 setCurrentStep('plan');
                                 setCustomBuilderCompleted(false);
                             }}
-                            className="mt-4"
+                            className={selectedPlan === "rango" ? "bg-background text-foreground" : "bg-foreground/10 text-foreground"}
                         >
                             تغییر پلن
-                        </Button>
-                    )}
+                        </Button>}
+                    </div>
                 </Card>
 
                 <form

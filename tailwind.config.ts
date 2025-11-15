@@ -4,7 +4,7 @@ module.exports = {
     // your content files here
   ],
   safelist: [
-    'text-pink-300', 
+    'via-white', 
   ],  
   // other configurations
 };
