@@ -7,7 +7,7 @@ import Link from "next/link";
 import { formatCurrency } from "@/lib/utils";
 import GradientBorder from "../ui/gradientBorder";
 
-const features = [
+export const features = [
     "طراحی رابط کاربری اختصاصی",
     "نمایش دسته‌بندی‌هاو آیتم‌های منو (عنوان، توضیح، مواد تشکیل‌دهنده، قیمت و آیکون)",
     "لینک‌های اجتماعی، راههای ارتباطی، آدرس و نقشه‌ی مسیریابی گوگل مپس در فوتر",

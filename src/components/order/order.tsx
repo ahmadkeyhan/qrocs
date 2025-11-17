@@ -17,6 +17,7 @@ import { CheckCircle } from 'lucide-react';
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import GradientBorder from "../ui/gradientBorder";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 
 interface FormOrderData {
     storeName: string
@@ -50,7 +51,7 @@ export default function Order() {
     const [provinceId, setProvinceId] = useState()
     const provinces = cities.filter((city) => city.type === "province").sort((a,b) => a.name.localeCompare(b.name))
     
-    const [customFeatures, setCustomFeatures] = useState<Record<string, string>>({});
+    const [customFeatures, setCustomFeatures] = useState<Record<string, string>>({availabilityToggle: "manual"});
     const [customPrice, setCustomPrice] = useState(10);
     const [customBuilderCompleted, setCustomBuilderCompleted] = useState(false);
 
@@ -81,7 +82,13 @@ export default function Order() {
     const handleCustomBuilderComplete = () => {
         setCustomBuilderCompleted(true);
         setCurrentStep('form');
+        console.log(customFeatures)
     };
+
+    const cancelCustom = () => {
+        setCurrentStep('plan');
+        setCustomBuilderCompleted(false);
+    }
 
     const handleCreateSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -244,17 +251,134 @@ export default function Order() {
 
     if (currentStep === 'custom' && !customBuilderCompleted) {
         return (
-            <div className="min-h-screen pb-20 pt-2">
-                <main className="flex flex-col items-center min-h-screen p-4 gap-6 bg-gradient-to-b from-background via-foreground/10 to-foreground/10">
+            <div className=" pt-2">
+                <main className="flex flex-col items-center p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
                     <CustomOrderBuilder 
                         selectedFeatures={customFeatures}
                         onFeaturesChange={setCustomFeatures}
                         onPriceChange={setCustomPrice}
                         onComplete={handleCustomBuilderComplete}
+                        onCancel={cancelCustom}
                     />
                 </main>
             </div>
         );
+    }
+
+    let features = selectedPlan === "dino" ? [
+        "نمایش دسته‌بندی‌ها و آیتم‌های منو (عنوان، توضیح، مواد تشکیل‌دهنده، قیمت و آیکون)",
+        "نمایش صحیح در تمام گوشی‌ها",
+        "تک زبانه",
+        "امکان انتخاب لایت مُد یا دارک مُد",
+        "موجود/ناموجود کردن دستی آیتم‌ها جهت نمایش و عدم نمایش در منو",
+        "لینک‌های اجتماعی، راههای ارتباطی، آدرس و نقشه‌ی مسیریابی گوگل مپس در فوتر",
+        "طراحی رابط کاربری اختصاصی",
+        "ایجاد، ویرایش، حذف و تغییر ترتیب دسته‌بندی‌ها و آیتم‌های منو",
+        "مدیریت حسابهای کاربری و تعیین سطح دسترسی",
+        "ایجاد و ویرایش رنگ و طرح کیوآر کد آماده‌ی چاپ",
+        "دامنه‌ی ir. رایگان",
+        "هاست اروپا یک ساله",
+        "پشتیبانی فنی به مدت یک سال"
+    ] :
+        selectedPlan === "rango" ? [
+        "نمایش دسته‌بندی‌ها و آیتم‌های منو (عنوان، عکس، توضیح، مواد تشکیل‌دهنده، قیمت و آیکون)",
+        "صفحه‌ی فرود(خانه) با عکس، پیام خوشامدگویی و متن معرفی ثابت",
+        "صفحه‌ی کاتالوگ محصولات فروشگاهی شامل عنوان، توضیحات و عکس محصولات",
+        "صفحه‌ی گالری ثابت تصاویر با تقسیم‌بندی آلبوم",
+        "صفحه‌ی وبلاگ با ٢٤ مقاله‌ی آماده(هر ماه ٢ مقاله)",
+        "نمایش صحیح در تمام اندازه‌ها (گوشی، تبلت، دسکتاپ)",
+        "تک زبانه",
+        "امکان انتخاب لایت مُد یا دارک مُد",
+        "قابلیت ارسال نوتیفیکیشن در تمام سیستم‌های عامل (اندروید، ios و ویندوز)",
+        "فرم استخدام و همکاری",
+        "فرم نظر سنجی، پیشنهادات و انتقادات",
+        "مدیریت، تأیید، پاسخ‌گویی و انتشار نظرات",
+        "موجود/ناموجود کردن دستی آیتم‌ها جهت نمایش و عدم نمایش در منو",
+        "لینک‌های اجتماعی، راههای ارتباطی، آدرس و نقشه‌ی مسیریابی گوگل مپس در فوتر",
+        "طراحی رابط کاربری اختصاصی",
+        "ایجاد، ویرایش، حذف و تغییر ترتیب دسته‌بندی‌ها و آیتم‌های منو",
+        "مدیریت حسابهای کاربری و تعیین سطح دسترسی",
+        "ایجاد و ویرایش رنگ و طرح کیوآر کد آماده‌ی چاپ",
+        "دامنه‌ی ir. رایگان",
+        "هاست اروپا یک ساله",
+        "پشتیبانی فنی به مدت یک سال",
+    ] :
+        selectedPlan === "croco" ? [
+        "نمایش دسته‌بندی‌هاو آیتم‌های منو (عنوان، سه عکس، توضیح، مواد تشکیل‌دهنده، قیمت و آیکون)",
+        "صفحه‌ی فرود(خانه) با عکس، پیام خوشامدگویی و متن معرفی قابل تغییر از پنل ادمین",
+        "صفحه‌ی کاتالوگ محصولات فروشگاهی شامل عنوان، توضیحات و سه عکس محصول",
+        "صفحه‌ی گالری قابل تغییر تصاویر با تقسیم‌بندی آلبوم از پنل ادمین",
+        "صفحه‌ی وبلاگ با ٢٤ مقاله‌ی آماده(هر ماه ٢ مقاله) و پنل وبلاگ‌نویسی",
+        "نمایش صحیح در تمام اندازه‌ها (گوشی، تبلت، دسکتاپ)",
+        "دو زبانه",
+        "لایت مُد، دارک مُد و قابلیت تشخیص تم ترجیحی کاربر",
+        "قابلیت نصب و ارسال نوتیفیکیشن در تمام سیستم‌های عامل (اندروید، ios و ویندوز)",
+        "فرم استخدام و همکاری",
+        "فرم نظر سنجی، پیشنهادات و انتقادات",
+        "مدیریت، تأیید، پاسخ‌گویی و انتشار نظرات",
+        "سیستم فراخوانی ویتر",
+        "ایجاد پاپ‌آپ برای تمامی صفحات",
+        "موجود/ناموجود کردن دستی و اتوماتیک آیتم‌ها و دسته‌بندی‌ها در ساعات یا روزهای معین",
+        "لینک‌های اجتماعی، راههای ارتباطی، آدرس و نقشه‌ی مسیریابی گوگل مپس در فوتر",
+        "طراحی رابط کاربری اختصاصی",
+        "ایجاد، ویرایش، حذف و تغییر ترتیب دسته‌بندی‌ها و آیتم‌های منو",
+        "مدیریت حسابهای کاربری و تعیین سطح دسترسی کاربران",
+        "ایجاد و ویرایش رنگ و طرح کیوآر کد آماده‌ی چاپ",
+        "دامنه‌ی ir. رایگان",
+        "هاست اروپا یک ساله",
+        "پشتیبانی فنی به مدت یک سال",
+    ] : 
+    [
+        "لینک‌های اجتماعی، راههای ارتباطی، آدرس و نقشه‌ی مسیریابی گوگل مپس در فوتر",
+        "طراحی رابط کاربری اختصاصی",
+        "ایجاد، ویرایش، حذف و تغییر ترتیب دسته‌بندی‌ها و آیتم‌های منو",
+        "مدیریت حسابهای کاربری و تعیین سطح دسترسی",
+        "ایجاد و ویرایش رنگ و طرح کیوآر کد آماده‌ی چاپ",
+        "دامنه‌ی ir. رایگان",
+        "هاست اروپا یک ساله",
+        "پشتیبانی فنی به مدت یک سال"
+    ]
+
+    if (selectedPlan === "custom") {
+        if (customFeatures.availabilityToggle === "manual") features.unshift("موجود/ناموجود کردن دستی آیتم‌ها جهت نمایش و عدم نمایش در منو")
+        else features.unshift("موجود/ناموجود کردن دستی و اتوماتیک آیتم‌ها و دسته‌بندی‌ها در ساعات یا روزهای معین")
+
+        if (customFeatures.pageDialog === "with-dialog") features.unshift("ایجاد پاپ‌آپ برای تمامی صفحات")
+
+        if (customFeatures.waiterSummoning === "with-summon") features.unshift("سیستم فراخوانی ویتر")
+
+        if (customFeatures.commentForm === "with-comment") features.unshift("فرم نظر سنجی، پیشنهادات و انتقادات", "مدیریت، تأیید، پاسخ‌گویی و انتشار نظرات")
+        
+        if (customFeatures.recruitForm === "with-recruit") features.unshift("فرم استخدام و همکاری")
+
+        if (customFeatures.pwa === "installable-notifications") features.unshift("قابلیت نصب و ارسال نوتیفیکیشن در تمام سیستم‌های عامل (اندروید، ios و ویندوز)")
+        else if (customFeatures.pwa === "notifications") features.unshift("قابلیت ارسال نوتیفیکیشن در تمام سیستم‌های عامل (اندروید، ios و ویندوز)")
+
+        if (customFeatures.theme === "light") features.unshift("لایت مُد")
+        else if (customFeatures.theme === "dark") features.unshift("دارک مُد")
+        else features.unshift("لایت مُد، دارک مُد و قابلیت تشخیص تم ترجیحی کاربر")
+    
+        if (customFeatures.bilingual === "single-language") features.unshift("تک زبانه")
+        else if (customFeatures.bilingual === "bilingual") features.unshift("دو زبانه")
+
+        if (customFeatures.responsiveness === "mobile-only") features.unshift("نمایش صحیح در تمام گوشی‌ها")
+        else if (customFeatures.responsiveness === "responsive") features.unshift("نمایش صحیح در تمام اندازه‌ها (گوشی، تبلت، دسکتاپ)")
+
+        if (customFeatures.blog === "dynamic-blog") features.unshift("صفحه‌ی وبلاگ با ٢٤ مقاله‌ی آماده(هر ماه ٢ مقاله) و پنل وبلاگ‌نویسی")
+        else if (customFeatures.blog === "static-blog") features.unshift("صفحه‌ی وبلاگ با ٢٤ مقاله‌ی آماده(هر ماه ٢ مقاله)")
+
+        if (customFeatures.gallery === "dynamic-gallery") features.unshift("صفحه‌ی گالری قابل تغییر تصاویر با تقسیم‌بندی آلبوم از پنل ادمین")
+        else if (customFeatures.gallery === "static-gallery") features.unshift("صفحه‌ی گالری ثابت تصاویر با تقسیم‌بندی آلبوم")
+
+        if (customFeatures.shop === "shop-one-image") features.unshift("صفحه‌ی کاتالوگ محصولات فروشگاهی شامل عنوان، توضیحات و عکس محصولات")
+        else if (customFeatures.shop === "shop-three-images") features.unshift("صفحه‌ی کاتالوگ محصولات فروشگاهی شامل عنوان، توضیحات و سه عکس محصول")
+
+        if (customFeatures.landingPage === "dynamic-landing") features.unshift("صفحه‌ی فرود(خانه) با عکس، پیام خوشامدگویی و متن معرفی قابل تغییر از پنل ادمین")
+        else if (customFeatures.landingPage === "static-landing") features.unshift("صفحه‌ی فرود(خانه) با عکس، پیام خوشامدگویی و متن معرفی ثابت")
+
+        if (customFeatures.itemImages === "no-image") features.unshift("نمایش دسته‌بندی‌ها و آیتم‌های منو (عنوان، توضیح، مواد تشکیل‌دهنده، قیمت و آیکون)")
+        else if (customFeatures.itemImages === "one-image") features.unshift("نمایش دسته‌بندی‌ها و آیتم‌های منو (عنوان، عکس، توضیح، مواد تشکیل‌دهنده، قیمت و آیکون)")
+        else features.unshift("نمایش دسته‌بندی‌ها و آیتم‌های منو (عنوان، سه عکس، توضیح، مواد تشکیل‌دهنده، قیمت و آیکون)")
     }
 
     return (
@@ -309,6 +433,32 @@ export default function Order() {
                         </Button>}
                     </div>
                 </Card>
+
+                <GradientBorder color="border">
+                    <Accordion type="single" collapsible className="w-full bg-background rounded-3xl px-0">
+                        <AccordionItem className="w-full" value="features">
+                            <AccordionTrigger className="p-4 rounded-3xl bg-background">
+                                <h3 className="text-xl text-foreground">ویژگی‌های انتخابی</h3>
+                            </AccordionTrigger>
+                            <AccordionContent className="p-4 pt-0">
+                                <ul>
+                                    {features.map((feature) => {
+                                        return (
+                                            <GradientBorder key={feature} color="border" right={false} left={false} bottom={false}>
+                                                <li className="text-subtext flex gap-2 py-2 items-center">
+                                                    <CheckCircle className="w-4 h-4 text-primary mt-1" />
+                                                    <p className="w-full">
+                                                        {feature}
+                                                    </p>
+                                                </li>
+                                            </GradientBorder>
+                                        )
+                                    })}
+                                </ul>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                </GradientBorder>
 
                 <form
                     onSubmit={handleCreateSubmit}

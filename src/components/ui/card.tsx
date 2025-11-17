@@ -6,7 +6,7 @@ const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <GradientBorder color="border">
+  <GradientBorder color={props.color? props.color : "border"}>
     <div
         ref={ref}
         className={className}
