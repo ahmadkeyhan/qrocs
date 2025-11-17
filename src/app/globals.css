@@ -4,6 +4,8 @@
   @theme {
     --animate-marquee: marquee 25s linear infinite;
     --animate-marquee2: marquee2 25s linear infinite;
+    --animate-accordion-down: accordion-down 0.3s ease-out;
+    --animate-accordion-up: accordion-up 0.3s ease-out;
     @keyframes marquee {
       0% {
         transform: translateX(0%);
@@ -18,6 +20,23 @@
       }
       100% {
         transform: translateX(0%);
+      }
+    }
+    /* Keyframes for accordion smooth animations */
+    @keyframes accordion-down {
+      from {
+        height: 0;
+      }
+      to {
+        height: var(--radix-accordion-content-height);
+      }
+    }
+    @keyframes accordion-up {
+      from {
+        height: var(--radix-accordion-content-height);
+      }
+      to {
+        height: 0;
       }
     }
     --color-background: white;
