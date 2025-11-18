@@ -7,6 +7,7 @@ export interface FeatureOption {
 export interface Feature {
   id: string;
   title: string;
+  description: string;
   options: FeatureOption[];
 }
 
@@ -16,6 +17,7 @@ export const customFeatures: Feature[] = [
   {
     id: "itemImages",
     title: "عکس آیتم‌های منو",
+    description: "",
     options: [
       { id: "no-image", label: "بدون عکس", price: 0 },
       { id: "one-image", label: "یک عکس به ازای هر آیتم", price: 2 },
@@ -24,7 +26,8 @@ export const customFeatures: Feature[] = [
   },
   {
     id: "landingPage",
-    title: "صفحه‌ی فرود",
+    title: "صفحه‌ی فرود(خانه)",
+    description: "",
     options: [
       { id: "no-landing", label: "بدون صفحه‌ی فرود", price: 0 },
       { id: "static-landing", label: "صفحه‌ی فرود ثابت", price: 2 },
@@ -34,6 +37,7 @@ export const customFeatures: Feature[] = [
   {
     id: "shop",
     title: "کاتالوگ محصولات فروشگاهی",
+    description: "",
     options: [
       { id: "no-shop", label: "بدون کاتالوگ", price: 0 },
       { id: "shop-one-image", label: "کاتالوگ با یک عکس به ازای هر محصول", price: 2 },
@@ -42,7 +46,8 @@ export const customFeatures: Feature[] = [
   },
   {
     id: "gallery",
-    title: "گالری",
+    title: "گالری تصاویر",
+    description: "",
     options: [
       { id: "no-gallery", label: "بدون گالری", price: 0 },
       { id: "static-gallery", label: "گالری استاتیک", price: 2 },
@@ -51,7 +56,8 @@ export const customFeatures: Feature[] = [
   },
   {
     id: "blog",
-    title: "بلاگ",
+    title: "وبلاگ",
+    description: "",
     options: [
       { id: "no-blog", label: "بدون بلاگ", price: 0 },
       { id: "static-blog", label: "بلاگ استاتیک", price: 3 },
@@ -60,7 +66,8 @@ export const customFeatures: Feature[] = [
   },
   {
     id: "responsiveness",
-    title: "ریسپانسیو",
+    title: "واکنش‌گرایی",
+    description: "",
     options: [
       { id: "mobile-only", label: "فقط موبایل", price: 0 },
       { id: "responsive", label: "تمام سایزها", price: 1.5 },
@@ -68,7 +75,8 @@ export const customFeatures: Feature[] = [
   },
   {
     id: "bilingual",
-    title: "چند زبانه",
+    title: "دو زبانه",
+    description: "",
     options: [
       { id: "single-language", label: "تک زبانه", price: 0 },
       { id: "bilingual", label: "دو زبانه", price: 2 },
@@ -77,6 +85,7 @@ export const customFeatures: Feature[] = [
   {
     id: "theme",
     title: "تم",
+    description: "",
     options: [
       { id: "light", label: "حالت روشن", price: 0 },
       { id: "dark", label: "حالت تاریک", price: 0 },
@@ -85,7 +94,8 @@ export const customFeatures: Feature[] = [
   },
   {
     id: "pwa",
-    title: "PWA و نوتیفیکیشن",
+    title: "قابلیت نصب و ارسال نوتیفیکیشن",
+    description: "",
     options: [
       { id: "no-pwa", label: "بدون", price: 0 },
       { id: "notifications", label: "ارسال نوتیفیکیشن", price: 3 },
@@ -95,6 +105,7 @@ export const customFeatures: Feature[] = [
   {
     id: "recruitForm",
     title: "فرم استخدام",
+    description: "",
     options: [
       { id: "no-recruit", label: "بدون فرم استخدام", price: 0 },
       { id: "with-recruit", label: "با فرم استخدام", price: 1 },
@@ -103,6 +114,7 @@ export const customFeatures: Feature[] = [
   {
     id: "commentForm",
     title: "فرم نظرات",
+    description: "",
     options: [
       { id: "no-comment", label: "بدون فرم نظرات", price: 0 },
       { id: "with-comment", label: "با فرم نظرات", price: 1.5 },
@@ -110,7 +122,8 @@ export const customFeatures: Feature[] = [
   },
   {
     id: "waiterSummoning",
-    title: "صدا زدن گارسون",
+    title: "فراخوانی ویتر",
+    description: "",
     options: [
       { id: "no-summon", label: "بدون", price: 0 },
       { id: "with-summon", label: "با امکان صدا زدن گارسون", price: 2 },
@@ -118,7 +131,8 @@ export const customFeatures: Feature[] = [
   },
   {
     id: "pageDialog",
-    title: "دیالوگ برای صفحات",
+    title: "پاپ آپ برای صفحات",
+    description: "",
     options: [
       { id: "no-dialog", label: "بدون دیالوگ", price: 0 },
       { id: "with-dialog", label: "با دیالوگ", price: 1 },
@@ -126,7 +140,8 @@ export const customFeatures: Feature[] = [
   },
   {
     id: "availabilityToggle",
-    title: "تغییر وضعیت در دسترس بودن",
+    title: "تغییر موجودی آیتم‌ها",
+    description: "",
     options: [
       { id: "manual", label: "تغییر دستی", price: 0 },
       { id: "scheduled", label: "تغییر زمان‌بندی شده", price: 1 },
