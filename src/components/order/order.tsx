@@ -69,24 +69,30 @@ export default function Order() {
     
     const { toast } = useToast();
 
+    const [direction, setDirection] = useState(-1);
+
     const handlePlanSelection = (plan: string) => {
         setSelectedPlan(plan);
         setNewOrder({ ...newOrder, plan });
         
         if (plan === 'custom') {
+            setDirection(-1); // Forward to custom builder
             setCurrentStep('custom');
         } else {
+            setDirection(-1); // Forward to form
             setCurrentStep('form');
         }
     };
 
     const handleCustomBuilderComplete = () => {
         setCustomBuilderCompleted(true);
+        setDirection(-1); // Forward to form
         setCurrentStep('form');
         console.log(customFeatures)
     };
 
     const cancelCustom = () => {
+        setDirection(1); // Backward to plan selection
         setCurrentStep('plan');
         setCustomBuilderCompleted(false);
     }
@@ -134,10 +140,9 @@ export default function Order() {
         }
     };
 
-    // Animation variants for smooth page transitions
     const slideVariants = {
         enter: (direction: number) => ({
-            x: direction > 0 ? 100 : -100,
+            x: direction > 0 ? 100 : -100, // Forward: slide from right (300), Backward: slide from left (-300)
             opacity: 0,
         }),
         center: {
@@ -145,19 +150,19 @@ export default function Order() {
             x: 0,
             opacity: 1,
             transition: {
-                x: { type: "spring", stiffness: 300, damping: 20 },
-                opacity: { duration: 0.4 },
+                x: { type: "spring", stiffness: 400, damping: 30 },
+                opacity: { duration: 0.2 },
                 staggerChildren: 0.1,
                 delayChildren: 0.1,
             },
         },
         exit: (direction: number) => ({
             zIndex: 0,
-            x: direction < 0 ? 100 : -100,
+            x: direction > 0 ? -100 : 100, // Forward: exit to left (-300), Backward: exit to right (300)
             opacity: 0,
             transition: {
-                x: { type: "spring", stiffness: 300, damping: 20 },
-                opacity: { duration: 0.4 },
+                x: { type: "spring", stiffness: 400, damping: 30 },
+                opacity: { duration: 0.2 },
             },
         }),
     }
@@ -175,164 +180,6 @@ export default function Order() {
             opacity: 0,
             scale: 0.95,
         },
-    }
-
-    // Direction: 1 for forward (plan -> custom -> form), -1 for backward
-    const [direction, setDirection] = useState(-1);
-
-    if (currentStep === 'plan') {
-        return (
-            <main className="flex flex-col items-center overflow-clip min-h-screen p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
-                <h1 className="text-3xl text-primary">انتخاب پلن</h1>
-                <AnimatePresence mode="popLayout">
-                    <motion.div
-                        key="plan-selection"
-                        variants={slideVariants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        custom={direction}
-                        className="w-full flex flex-col items-center gap-6"
-                    >
-                        <div className="grid gap-4 w-full max-w-4xl sm:grid-cols-2 lg:grid-cols-4">
-                            <motion.div variants={cardVariants}>
-                                <Card 
-                                    className="flex items-end bg-background cursor-pointer hover:shadow-lg transition-shadow"
-                                    onClick={() => handlePlanSelection('dino')}
-                                >
-                                    <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
-                                        {mounted && <Image
-                                            src={resolvedTheme === 'dark' ? `/dinoAvatarDark.png` : `/dinoAvatar.png`}
-                                            alt="sdf"
-                                            fill
-                                            className="object-cover"
-                                        />}
-                                    </div>
-                                    <div className="flex flex-col grow gap-4 p-6 pr-2">
-                                        <div className="flex justify-between items-center">
-                                            <h3 className="text-2xl">داینو</h3>
-                                            <p className="text-lg font-bold">
-                                                {formatCurrency(10000000)} <span className="text-sm">تومان</span>
-                                            </p>
-                                        </div>
-                                        <GradientBorder color="border" bottom={false} right={false} left={false} radius="none">
-                                            <p className="text-subtext pt-4 text-sm">
-                                            امکانات ضروری منوی دیجیتال با کمترین هزینه
-                                        </p>
-                                        </GradientBorder>
-                                    </div>
-                                </Card>
-                            </motion.div>
-
-                            <motion.div variants={cardVariants}>
-                                <Card 
-                                    className="flex items-end bg-primary cursor-pointer hover:shadow-lg transition-shadow"
-                                    onClick={() => handlePlanSelection('rango')}
-                                >
-                                    <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
-                                        {mounted && <Image
-                                            src={resolvedTheme === 'dark' ? `/rangoAvatarDark.png` : `/rangoAvatar.png`}
-                                            alt="sdf"
-                                            fill
-                                            className="object-cover"
-                                        />}
-                                    </div>
-                                    <div className="flex flex-col grow gap-4 p-6 pr-2">
-                                        <div className="flex justify-between items-center">
-                                            <h3 className="text-2xl text-background">رنگو</h3>
-                                            <p className="text-lg text-background font-bold">
-                                                {formatCurrency(25000000)} <span className="text-sm">تومان</span>
-                                            </p>
-                                        </div>
-                                        <GradientBorder color="white" bottom={false} right={false} left={false} radius="none">
-                                            <p className="text-white/70 pt-4 text-sm">
-                                            امکانات پیشرفته‌ی منوی دیجیتال با {formatCurrency(10)}% تخفیف
-                                        </p>
-                                        </GradientBorder>
-                                    </div>
-                                </Card>
-                            </motion.div>
-
-                            <motion.div variants={cardVariants}>
-                                <Card 
-                                    className="flex items-end bg-background cursor-pointer hover:shadow-lg transition-shadow"
-                                    onClick={() => handlePlanSelection('croco')}
-                                >
-                                    <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
-                                        {mounted && <Image
-                                            src={resolvedTheme === 'dark' ? `/crocoAvatarDark.png` : `/crocoAvatar.png`}
-                                            alt="sdf"
-                                            fill
-                                            className="object-cover"
-                                        />}
-                                    </div>
-                                    <div className="flex flex-col grow gap-4 p-6 pr-2">
-                                        <div className="flex justify-between items-center">
-                                            <h3 className="text-2xl text-amber-400 dark:text-amber-300">کروکو</h3>
-                                            <p className="text-lg text-foreground font-bold">
-                                                {formatCurrency(40000000)} <span className="text-sm">تومان</span>
-                                            </p>
-                                        </div>
-                                        <GradientBorder color="border" bottom={false} right={false} left={false} radius="none">
-                                            <p className="text-subtext pt-4 text-sm">
-                                        تمام امکانات منوی دیجیتال کردیت با {formatCurrency(15)}% تخفیف
-                                        </p>
-                                        </GradientBorder>
-                                    </div>
-                                </Card>
-                            </motion.div>
-
-                            <motion.div variants={cardVariants}>
-                                <Card 
-                                    className="flex items-end bg-background cursor-pointer hover:shadow-lg transition-shadow"
-                                    onClick={() => handlePlanSelection('custom')}
-                                >
-                                    <div className="flex flex-col grow gap-4 p-6">
-                                        <div className="flex justify-between items-center">
-                                            <h3 className="text-2xl">کاستوم</h3>
-                                            <p className="text-lg font-bold">
-                                                <span className="text-sm">شروع از</span> {formatCurrency(10000000)} <span className="text-sm">تومان</span>
-                                            </p>
-                                        </div>
-                                        <GradientBorder color="border" bottom={false} right={false} left={false} radius="none">
-                                            <p className="text-subtext pt-4 text-sm">
-                                        هیچ کدوم از پلن‌ها مناسب نیازت نیست؟ ویژگی‌های مد نظرت رو انتخاب کن و سفارش شخصی‌سازی شده بده! 
-                                        </p>
-                                        </GradientBorder>
-                                    </div>
-                                </Card>
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
-            </main>
-        );
-    }
-
-    if (currentStep === 'custom' && !customBuilderCompleted) {
-        return (
-            <main className="flex flex-col items-center overflow-clip p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
-                <AnimatePresence mode="popLayout">
-                    <motion.div
-                        key="custom-builder"
-                        variants={slideVariants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        custom={direction}
-                        className="w-full flex justify-center"
-                    >
-                        <CustomOrderBuilder 
-                            selectedFeatures={customFeatures}
-                            onFeaturesChange={setCustomFeatures}
-                            onPriceChange={setCustomPrice}
-                            onComplete={handleCustomBuilderComplete}
-                            onCancel={cancelCustom}
-                        />
-                    </motion.div>
-                </AnimatePresence>
-            </main>
-        );
     }
 
     let features = selectedPlan === "dino" ? [
@@ -452,10 +299,154 @@ export default function Order() {
     }
 
     return (
-            <main className="relative flex flex-col items-center overflow-clip min-h-screen p-4 gap-4 bg-gradient-to-b from-background to-foreground/10">
-                <AnimatePresence mode="popLayout">
+        <main className="flex flex-col items-center overflow-clip min-h-screen p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
+            <AnimatePresence mode="wait" custom={direction}>
+                {currentStep === 'plan' && (
                     <motion.div
-                        key="order-form"
+                        key="plan"
+                        variants={slideVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        custom={direction}
+                        className="w-full flex flex-col items-center gap-6"
+                    >
+                        <h1 className="text-3xl text-primary">انتخاب پلن</h1>
+                        <div className="grid gap-4 w-full max-w-4xl sm:grid-cols-2 lg:grid-cols-4">
+                            <motion.div variants={cardVariants}>
+                                <Card 
+                                    className="flex items-end bg-background cursor-pointer hover:shadow-lg transition-shadow"
+                                    onClick={() => handlePlanSelection('dino')}
+                                >
+                                    <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
+                                        {mounted && <Image
+                                            src={resolvedTheme === 'dark' ? `/dinoAvatarDark.png` : `/dinoAvatar.png`}
+                                            alt="sdf"
+                                            fill
+                                            className="object-cover"
+                                        />}
+                                    </div>
+                                    <div className="flex flex-col grow gap-4 p-6 pr-2">
+                                        <div className="flex justify-between items-center">
+                                            <h3 className="text-2xl">داینو</h3>
+                                            <p className="text-lg font-bold">
+                                                {formatCurrency(10000000)} <span className="text-sm">تومان</span>
+                                            </p>
+                                        </div>
+                                        <GradientBorder color="border" bottom={false} right={false} left={false} radius="none">
+                                            <p className="text-subtext pt-4 text-sm">
+                                            امکانات ضروری منوی دیجیتال با کمترین هزینه
+                                        </p>
+                                        </GradientBorder>
+                                    </div>
+                                </Card>
+                            </motion.div>
+
+                            <motion.div variants={cardVariants}>
+                                <Card 
+                                    className="flex items-end bg-primary cursor-pointer hover:shadow-lg transition-shadow"
+                                    onClick={() => handlePlanSelection('rango')}
+                                >
+                                    <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
+                                        {mounted && <Image
+                                            src={resolvedTheme === 'dark' ? `/rangoAvatarDark.png` : `/rangoAvatar.png`}
+                                            alt="sdf"
+                                            fill
+                                            className="object-cover"
+                                        />}
+                                    </div>
+                                    <div className="flex flex-col grow gap-4 p-6 pr-2">
+                                        <div className="flex justify-between items-center">
+                                            <h3 className="text-2xl text-background">رنگو</h3>
+                                            <p className="text-lg text-background font-bold">
+                                                {formatCurrency(25000000)} <span className="text-sm">تومان</span>
+                                            </p>
+                                        </div>
+                                        <GradientBorder color="white" bottom={false} right={false} left={false} radius="none">
+                                            <p className="text-white/70 pt-4 text-sm">
+                                            امکانات پیشرفته‌ی منوی دیجیتال با {formatCurrency(10)}% تخفیف
+                                        </p>
+                                        </GradientBorder>
+                                    </div>
+                                </Card>
+                            </motion.div>
+
+                            <motion.div variants={cardVariants}>
+                                <Card 
+                                    className="flex items-end bg-background cursor-pointer hover:shadow-lg transition-shadow"
+                                    onClick={() => handlePlanSelection('croco')}
+                                >
+                                    <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
+                                        {mounted && <Image
+                                            src={resolvedTheme === 'dark' ? `/crocoAvatarDark.png` : `/crocoAvatar.png`}
+                                            alt="sdf"
+                                            fill
+                                            className="object-cover"
+                                        />}
+                                    </div>
+                                    <div className="flex flex-col grow gap-4 p-6 pr-2">
+                                        <div className="flex justify-between items-center">
+                                            <h3 className="text-2xl text-amber-400 dark:text-amber-300">کروکو</h3>
+                                            <p className="text-lg text-foreground font-bold">
+                                                {formatCurrency(40000000)} <span className="text-sm">تومان</span>
+                                            </p>
+                                        </div>
+                                        <GradientBorder color="border" bottom={false} right={false} left={false} radius="none">
+                                            <p className="text-subtext pt-4 text-sm">
+                                        تمام امکانات منوی دیجیتال کردیت با {formatCurrency(15)}% تخفیف
+                                        </p>
+                                        </GradientBorder>
+                                    </div>
+                                </Card>
+                            </motion.div>
+
+                            <motion.div variants={cardVariants}>
+                                <Card 
+                                    className="flex items-end bg-background cursor-pointer hover:shadow-lg transition-shadow"
+                                    onClick={() => handlePlanSelection('custom')}
+                                >
+                                    <div className="flex flex-col grow gap-4 p-6">
+                                        <div className="flex justify-between items-center">
+                                            <h3 className="text-2xl">کاستوم</h3>
+                                            <p className="text-lg font-bold">
+                                                <span className="text-sm">شروع از</span> {formatCurrency(10000000)} <span className="text-sm">تومان</span>
+                                            </p>
+                                        </div>
+                                        <GradientBorder color="border" bottom={false} right={false} left={false} radius="none">
+                                            <p className="text-subtext pt-4 text-sm">
+                                        هیچ کدوم از پلن‌ها مناسب نیازت نیست؟ ویژگی‌های مد نظرت رو انتخاب کن و سفارش شخصی‌سازی شده بده! 
+                                        </p>
+                                        </GradientBorder>
+                                    </div>
+                                </Card>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                )}
+
+                {currentStep === 'custom' && !customBuilderCompleted && (
+                    <motion.div
+                        key="custom"
+                        variants={slideVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        custom={direction}
+                        className="w-full flex justify-center"
+                    >
+                        <CustomOrderBuilder 
+                            selectedFeatures={customFeatures}
+                            onFeaturesChange={setCustomFeatures}
+                            onPriceChange={setCustomPrice}
+                            onComplete={handleCustomBuilderComplete}
+                            onCancel={cancelCustom}
+                        />
+                    </motion.div>
+                )}
+
+                {currentStep === 'form' && (
+                    <motion.div
+                        key="form"
                         variants={slideVariants}
                         initial="enter"
                         animate="center"
@@ -505,6 +496,7 @@ export default function Order() {
                                         <Button 
                                             size="sm" 
                                             onClick={() => {
+                                                setDirection(1); // Backward to plan selection
                                                 setCurrentStep('plan');
                                                 setCustomBuilderCompleted(false);
                                             }}
@@ -515,8 +507,9 @@ export default function Order() {
                                         <Button 
                                             size="sm" 
                                             onClick={() => {
-                                                handlePlanSelection('custom')
-                                                setCustomBuilderCompleted(false)
+                                                setDirection(1); // Backward to custom builder
+                                                setCustomBuilderCompleted(false);
+                                                setCurrentStep('custom');
                                             }}
                                             className="bg-foreground/10 text-foreground"
                                         >
@@ -656,7 +649,8 @@ export default function Order() {
                             </div>
                         </form>
                     </motion.div>
-                </AnimatePresence>
-            </main>
+                )}
+            </AnimatePresence>
+        </main>
     )
 }

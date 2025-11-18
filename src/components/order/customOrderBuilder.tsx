@@ -103,8 +103,8 @@ export default function CustomOrderBuilder({
             x: 0,
             opacity: 1,
             transition: {
-                x: { type: "spring", stiffness: 300, damping: 20 },
-                opacity: { duration: 0.4 },
+                x: { type: "spring", stiffness: 400, damping: 20 },
+                opacity: { duration: 0.2 },
             },
         },
         exit: (direction: number) => ({
@@ -112,8 +112,8 @@ export default function CustomOrderBuilder({
             x: direction < 0 ? 100 : -100,
             opacity: 0,
             transition: {
-                x: { type: "spring", stiffness: 300, damping: 20 },
-                opacity: { duration: 0.4 },
+                x: { type: "spring", stiffness: 400, damping: 20 },
+                opacity: { duration: 0.2 },
             },
         }),
     }
