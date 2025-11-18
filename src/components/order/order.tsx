@@ -428,7 +428,7 @@ export default function Order() {
                                     setCurrentStep('plan');
                                     setCustomBuilderCompleted(false);
                                 }}
-                                className={selectedPlan === "rango" ? "bg-background text-foreground" : "bg-foreground/10 text-foreground"}
+                                className={`bg-foreground/15 text-base ${selectedPlan === "rango" ? "text-background" : "text-foreground"}`}
                             >
                                 تغییر پلن
                             </Button> :
