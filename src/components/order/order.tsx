@@ -136,7 +136,7 @@ export default function Order() {
     if (currentStep === 'plan') {
         return (
             <div className="min-h-screen pb-20 pt-2">
-                <main className="flex flex-col items-center min-h-screen p-4 gap-6 bg-gradient-to-b from-background via-foreground/10 to-foreground/10">
+                <main className="flex flex-col items-center min-h-screen p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
                     <h1 className="text-3xl text-primary">انتخاب پلن</h1>
                     
                     <div className="grid gap-4 w-full max-w-4xl sm:grid-cols-2 lg:grid-cols-4">
@@ -252,7 +252,7 @@ export default function Order() {
     if (currentStep === 'custom' && !customBuilderCompleted) {
         return (
             <div className=" pt-2">
-                <main className="flex flex-col items-center p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
+                <main className="flex flex-col items-center overflow-clip p-4 gap-6 bg-gradient-to-b from-background to-foreground/10">
                     <CustomOrderBuilder 
                         selectedFeatures={customFeatures}
                         onFeaturesChange={setCustomFeatures}
@@ -382,7 +382,7 @@ export default function Order() {
     }
 
     return (
-            <main className="relative flex flex-col items-center min-h-screen p-4 gap-4 bg-gradient-to-b from-background via-foreground/10 to-foreground/10">
+            <main className="relative flex flex-col items-center min-h-screen p-4 gap-4 bg-gradient-to-b from-background to-foreground/10">
                 <h1 className="text-3xl text-primary">تکمیل سفارش</h1>
                 
                 {/* Selected Plan Summary */}

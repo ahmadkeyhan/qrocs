@@ -13,6 +13,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/utils";
 import { ChevronRight, ChevronLeft, Check } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface CustomOrderBuilderProps {
     selectedFeatures: Record<string, string>;
@@ -76,6 +77,7 @@ export default function CustomOrderBuilder({
         }
             
         if (currentStep < customFeatures.length - 1) {
+            setDirection(-1)
             setCurrentStep(currentStep + 1);
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
@@ -83,12 +85,41 @@ export default function CustomOrderBuilder({
 
     const handlePrevious = () => {
         if (currentStep > 0) {
+            setDirection(1)
             setCurrentStep(currentStep - 1);
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
     };
 
     const currentFeature = customFeatures[currentStep];
+
+    const slideVariants = {
+        enter: (direction: number) => ({
+            x: direction > 0 ? 100 : -100,
+            opacity: 0,
+        }),
+        center: {
+            zIndex: 1,
+            x: 0,
+            opacity: 1,
+            transition: {
+                x: { type: "spring", stiffness: 300, damping: 20 },
+                opacity: { duration: 0.4 },
+            },
+        },
+        exit: (direction: number) => ({
+            zIndex: 0,
+            x: direction < 0 ? 100 : -100,
+            opacity: 0,
+            transition: {
+                x: { type: "spring", stiffness: 300, damping: 20 },
+                opacity: { duration: 0.4 },
+            },
+        }),
+    }
+
+    // Direction tracking for animations
+    const [direction, setDirection] = useState(-1);
 
     return (
         <div className="relative space-y-4 w-full max-w-2xl">
@@ -186,55 +217,65 @@ export default function CustomOrderBuilder({
                 </Card>
             </div>
 
-            <div className="space-y-4">
-                <div className="px-4">
-                    <Label className="text-xl font-[potk] text-primary">
-                        {currentFeature.title}
-                    </Label>
-                </div>
-
-                <RadioGroup
-                    dir="rtl"
-                    value={
-                        selectedFeatures[currentFeature.id] ||
-                        currentFeature.options[0].id
-                    }
-                    onValueChange={(value) =>
-                        handleFeatureChange(currentFeature.id, value)
-                    }
-                    className="space-y-2"
+            <AnimatePresence mode="popLayout" custom={direction}>
+                <motion.div
+                    key={currentStep}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    className="space-y-4"
                 >
-                    {currentFeature.options.map((option) => (
-                        <Card
-                            color="background"
-                            key={option.id}
-                            className="flex items-center justify-between p-4 bg-background hover:bg-primary/10  transition-all cursor-pointer"
-                        >
-                            <div className="flex items-center gap-2">
-                                <RadioGroupItem
-                                    value={option.id}
-                                    id={`${currentFeature.id}-${option.id}`}
-                                />
-                                <Label
-                                    htmlFor={`${currentFeature.id}-${option.id}`}
-                                    className="text-base"
-                                >
-                                    {option.label}
-                                </Label>
-                            </div>
-                            <span
-                                className={`text-sm font-semibold text-primary w-1/4 text-left`}
+                    <div className="px-4">
+                        <Label className="text-xl font-[potk] text-primary">
+                            {currentFeature.title}
+                        </Label>
+                    </div>
+
+                    <RadioGroup
+                        dir="rtl"
+                        value={
+                            selectedFeatures[currentFeature.id] ||
+                            currentFeature.options[0].id
+                        }
+                        onValueChange={(value) =>
+                            handleFeatureChange(currentFeature.id, value)
+                        }
+                        className="space-y-2"
+                    >
+                        {currentFeature.options.map((option) => (
+                            <Card
+                                color="background"
+                                key={option.id}
+                                className="flex items-center justify-between p-4 bg-background hover:bg-primary/10  transition-all cursor-pointer"
                             >
-                                {option.price > 0
-                                    ? `${formatCurrency(
-                                          option.price * 1000000
-                                      )} ت`
-                                    : "رایگان"}
-                            </span>
-                        </Card>
-                    ))}
-                </RadioGroup>
-            </div>
+                                <div className="flex items-center gap-2">
+                                    <RadioGroupItem
+                                        value={option.id}
+                                        id={`${currentFeature.id}-${option.id}`}
+                                    />
+                                    <Label
+                                        htmlFor={`${currentFeature.id}-${option.id}`}
+                                        className="text-base"
+                                    >
+                                        {option.label}
+                                    </Label>
+                                </div>
+                                <span
+                                    className={`text-sm font-semibold text-primary w-1/4 text-left`}
+                                >
+                                    {option.price > 0
+                                        ? `${formatCurrency(
+                                            option.price * 1000000
+                                        )} ت`
+                                        : "رایگان"}
+                                </span>
+                            </Card>
+                        ))}
+                    </RadioGroup>
+                </motion.div>
+            </AnimatePresence>
         </div>
     );
 }
