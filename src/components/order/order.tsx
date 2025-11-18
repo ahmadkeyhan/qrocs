@@ -421,16 +421,28 @@ export default function Order() {
                                 <span className="text-sm"> تومان</span>
                             </p>
                         </div>
-                        {selectedPlan !== "custom" && <Button 
-                            size="sm" 
-                            onClick={() => {
-                                setCurrentStep('plan');
-                                setCustomBuilderCompleted(false);
-                            }}
-                            className={selectedPlan === "rango" ? "bg-background text-foreground" : "bg-foreground/10 text-foreground"}
-                        >
-                            تغییر پلن
-                        </Button>}
+                        {selectedPlan !== "custom" ? 
+                            <Button 
+                                size="sm" 
+                                onClick={() => {
+                                    setCurrentStep('plan');
+                                    setCustomBuilderCompleted(false);
+                                }}
+                                className={selectedPlan === "rango" ? "bg-background text-foreground" : "bg-foreground/10 text-foreground"}
+                            >
+                                تغییر پلن
+                            </Button> :
+                            <Button 
+                                size="sm" 
+                                onClick={() => {
+                                    handlePlanSelection('custom')
+                                    setCustomBuilderCompleted(false)
+                                }}
+                                className="bg-foreground/10 text-foreground"
+                            >
+                                تغییر ویژگی‌ها
+                            </Button>
+                        }
                     </div>
                 </Card>
 
