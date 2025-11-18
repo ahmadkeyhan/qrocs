@@ -382,69 +382,70 @@ export default function Order() {
     }
 
     return (
-        <div className="min-h-screen pb-20 pt-2">
-            <main className="flex flex-col items-center min-h-screen p-4 gap-4 bg-gradient-to-b from-background via-foreground/10 to-foreground/10">
-                <h1 className="text-3xl text-primary">سفارش منوی دیجیتال</h1>
+            <main className="relative flex flex-col items-center min-h-screen p-4 gap-4 bg-gradient-to-b from-background via-foreground/10 to-foreground/10">
+                <h1 className="text-3xl text-primary">تکمیل سفارش</h1>
                 
                 {/* Selected Plan Summary */}
-                <Card 
-                    className={`flex items-end ${selectedPlan === "rango" ? "bg-primary" : "bg-background"} cursor-pointer hover:shadow-lg transition-shadow`}
-                >
-                    {selectedPlan !== 'custom' && <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
-                        {mounted && <Image
-                            src={
-                                resolvedTheme === 'dark' && selectedPlan === 'dino' ? `/dinoAvatarDark.png` :
-                                resolvedTheme === 'light' && selectedPlan === 'dino' ? `/dinoAvatar.png` :
-                                resolvedTheme === 'dark' && selectedPlan === 'rango' ? `/rangoAvatarDark.png` :
-                                resolvedTheme === 'light' && selectedPlan === 'rango' ? `/rangoAvatar.png` :
-                                resolvedTheme === 'dark' && selectedPlan === 'croco' ? `/crocoAvatarDark.png` :
-                                `/crocoAvatar.png`
-                                }
-                            alt="sdf"
-                            fill
-                            className="object-cover"
-                        />}
-                    </div>}
-                    <div className="flex flex-col grow gap-4 p-6">
-                        <div className={`flex justify-between items-center ${selectedPlan === "rango" ? "text-background" : "text-foreground"}`}>
-                            <h3 className="text-2xl">
-                                {selectedPlan === 'dino' && 'داینو'}
-                                {selectedPlan === 'rango' && 'رنگو'}
-                                {selectedPlan === 'croco' && 'کروکو'}
-                                {selectedPlan === 'custom' && 'کاستوم'}
-                            </h3>
-                            <p className="text-lg font-bold">
-                                {selectedPlan === 'dino' && `${formatCurrency(10000000)}`}
-                                {selectedPlan === 'rango' && `${formatCurrency(25000000)}`}
-                                {selectedPlan === 'croco' && `${formatCurrency(40000000)}`}
-                                {selectedPlan === 'custom' && `${formatCurrency(customPrice*1000000)}`}
-                                <span className="text-sm"> تومان</span>
-                            </p>
+                <div className="sticky top-[3.75rem] sm:top-24 z-10 w-full">
+                    <Card 
+                        className={`flex items-end ${selectedPlan === "rango" ? "bg-primary" : "bg-background"} cursor-pointer hover:shadow-lg transition-shadow`}
+                    >
+                        {selectedPlan !== 'custom' && <div className="relative w-20 h-20 rounded-3xl overflow-hidden ">
+                            {mounted && <Image
+                                src={
+                                    resolvedTheme === 'dark' && selectedPlan === 'dino' ? `/dinoAvatarDark.png` :
+                                    resolvedTheme === 'light' && selectedPlan === 'dino' ? `/dinoAvatar.png` :
+                                    resolvedTheme === 'dark' && selectedPlan === 'rango' ? `/rangoAvatarDark.png` :
+                                    resolvedTheme === 'light' && selectedPlan === 'rango' ? `/rangoAvatar.png` :
+                                    resolvedTheme === 'dark' && selectedPlan === 'croco' ? `/crocoAvatarDark.png` :
+                                    `/crocoAvatar.png`
+                                    }
+                                alt="sdf"
+                                fill
+                                className="object-cover"
+                            />}
+                        </div>}
+                        <div className="flex flex-col grow gap-4 p-6">
+                            <div className={`flex justify-between items-center ${selectedPlan === "rango" ? "text-background" : "text-foreground"}`}>
+                                <h3 className="text-2xl">
+                                    {selectedPlan === 'dino' && 'داینو'}
+                                    {selectedPlan === 'rango' && 'رنگو'}
+                                    {selectedPlan === 'croco' && 'کروکو'}
+                                    {selectedPlan === 'custom' && 'کاستوم'}
+                                </h3>
+                                <p className="text-lg font-bold">
+                                    {selectedPlan === 'dino' && `${formatCurrency(10000000)}`}
+                                    {selectedPlan === 'rango' && `${formatCurrency(25000000)}`}
+                                    {selectedPlan === 'croco' && `${formatCurrency(40000000)}`}
+                                    {selectedPlan === 'custom' && `${formatCurrency(customPrice*1000000)}`}
+                                    <span className="text-sm"> تومان</span>
+                                </p>
+                            </div>
+                            {selectedPlan !== "custom" ? 
+                                <Button 
+                                    size="sm" 
+                                    onClick={() => {
+                                        setCurrentStep('plan');
+                                        setCustomBuilderCompleted(false);
+                                    }}
+                                    className={`bg-foreground/15 text-base ${selectedPlan === "rango" ? "text-background" : "text-foreground"}`}
+                                >
+                                    تغییر پلن
+                                </Button> :
+                                <Button 
+                                    size="sm" 
+                                    onClick={() => {
+                                        handlePlanSelection('custom')
+                                        setCustomBuilderCompleted(false)
+                                    }}
+                                    className="bg-foreground/10 text-foreground"
+                                >
+                                    تغییر ویژگی‌ها
+                                </Button>
+                            }
                         </div>
-                        {selectedPlan !== "custom" ? 
-                            <Button 
-                                size="sm" 
-                                onClick={() => {
-                                    setCurrentStep('plan');
-                                    setCustomBuilderCompleted(false);
-                                }}
-                                className={`bg-foreground/15 text-base ${selectedPlan === "rango" ? "text-background" : "text-foreground"}`}
-                            >
-                                تغییر پلن
-                            </Button> :
-                            <Button 
-                                size="sm" 
-                                onClick={() => {
-                                    handlePlanSelection('custom')
-                                    setCustomBuilderCompleted(false)
-                                }}
-                                className="bg-foreground/10 text-foreground"
-                            >
-                                تغییر ویژگی‌ها
-                            </Button>
-                        }
-                    </div>
-                </Card>
+                    </Card>
+                </div>
 
                 <GradientBorder color="border">
                     <Accordion type="single" collapsible className="w-full bg-background rounded-3xl px-0">
@@ -570,14 +571,10 @@ export default function Order() {
                             size="lg"
                             className="text-xl font-bold w-full sm:w-auto px-12"
                         >
-                            {selectedPlan === 'custom' 
-                                ? `ثبت سفارش (${formatCurrency(customPrice)} میلیون تومان)`
-                                : "ثبت سفارش"
-                            }
+                            ثبت سفارش
                         </Button>
                     </div>
                 </form>
             </main>
-        </div>
     )
 }
