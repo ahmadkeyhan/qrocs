@@ -122,8 +122,8 @@ export default function CustomOrderBuilder({
     const [direction, setDirection] = useState(-1);
 
     return (
-        <div className="relative space-y-4 w-full max-w-2xl">
-            <div className="space-y-4 sticky top-[5.25rem] sm:top-24 z-10">
+        <div className="relative space-y-8 w-full max-w-2xl">
+            <div className="sticky top-[5.25rem] sm:top-24 z-10">
                 <Card className="p-4 bg-background space-y-4">
                     {/* Progress Bar */}
                     <div className="space-y-2">
@@ -250,7 +250,7 @@ export default function CustomOrderBuilder({
                                 key={option.id}
                                 className="flex items-center justify-between p-4 bg-background hover:bg-primary/10  transition-all cursor-pointer"
                             >
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-2 w-3/4">
                                     <RadioGroupItem
                                         value={option.id}
                                         id={`${currentFeature.id}-${option.id}`}
