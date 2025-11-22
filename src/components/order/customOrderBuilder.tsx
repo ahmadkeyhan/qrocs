@@ -122,7 +122,7 @@ export default function CustomOrderBuilder({
     const [direction, setDirection] = useState(-1);
 
     return (
-        <div className="relative space-y-8 w-full max-w-2xl">
+        <div className="relative space-y-4 w-full max-w-2xl">
             <div className="sticky top-[5.25rem] sm:top-24 z-10">
                 <Card className="p-4 bg-background space-y-4">
                     {/* Progress Bar */}
@@ -225,13 +225,16 @@ export default function CustomOrderBuilder({
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    className="space-y-4"
+                    className="space-y-2"
                 >
-                    <div className="px-4">
+                    <Card className="p-4 bg-background">
                         <Label className="text-xl font-[potk] text-primary">
                             {currentFeature.title}
                         </Label>
-                    </div>
+                        <p className="text-subtext p-2 pb-0">
+                            {currentFeature.description}
+                        </p>
+                    </Card>
 
                     <RadioGroup
                         dir="rtl"
@@ -242,11 +245,11 @@ export default function CustomOrderBuilder({
                         onValueChange={(value) =>
                             handleFeatureChange(currentFeature.id, value)
                         }
-                        className="space-y-2"
+                        className=""
                     >
                         {currentFeature.options.map((option) => (
                             <Card
-                                color="background"
+                                color="border"
                                 key={option.id}
                                 className="flex items-center justify-between p-4 bg-background hover:bg-primary/10  transition-all cursor-pointer"
                             >
